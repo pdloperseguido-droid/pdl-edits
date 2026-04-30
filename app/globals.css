@@ -1,0 +1,299 @@
+@import "tailwindcss";
+
+@theme {
+  --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
+  --font-display: var(--font-space), var(--font-inter), sans-serif;
+}
+
+/* ================================================
+   PDL Edits — Design System Global
+   ================================================ */
+
+@layer base {
+  :root {
+    /* Cores principais */
+    --bg-primary: #0A0A0A;
+    --bg-secondary: #111111;
+    --bg-card: rgba(255, 255, 255, 0.03);
+
+    /* Roxo gradiente accent */
+    --accent-from: #7C3AED;
+    --accent-to: #A855F7;
+    --accent-mid: #9333EA;
+
+    /* Texto */
+    --text-primary: #FFFFFF;
+    --text-secondary: #A1A1AA;
+    --text-muted: #52525B;
+
+    /* Bordas */
+    --border: rgba(255, 255, 255, 0.08);
+    --border-accent: rgba(124, 58, 237, 0.4);
+
+    /* Status colors */
+    --status-pending: #F59E0B;
+    --status-confirmed: #3B82F6;
+    --status-in-progress: #8B5CF6;
+    --status-review: #F97316;
+    --status-delivered: #10B981;
+    --status-cancelled: #EF4444;
+
+    /* Fontes */
+    --font-heading: var(--font-space), sans-serif;
+    --font-body: var(--font-inter), sans-serif;
+  }
+
+  /* Aplicação GLOBAL e agressiva para garantir o site todo */
+  * {
+    font-family: var(--font-body);
+  }
+
+  h1, h2, h3, h4, h5, h6, .font-display, .font-heading {
+    font-family: var(--font-heading) !important;
+    letter-spacing: -0.02em;
+  }
+
+  body {
+    background-color: var(--bg-primary);
+    color: var(--text-primary);
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    font-family: var(--font-body);
+  }
+}
+
+/* ================================================
+   Scroll customizado
+   ================================================ */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #111; }
+::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #7C3AED; }
+
+/* ================================================
+   Seleção de texto
+   ================================================ */
+::selection { background: rgba(124, 58, 237, 0.4); color: white; }
+
+/* ================================================
+   Gradientes de texto
+   ================================================ */
+.text-gradient {
+  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #C084FC 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.text-gradient-warm {
+  background: linear-gradient(135deg, #A855F7 0%, #EC4899 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+/* ================================================
+   Glass morphism
+   ================================================ */
+.glass {
+  background: rgba(255, 255, 255, 0.03);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
+  border: 1px solid rgba(255, 255, 255, 0.06);
+}
+
+.glass-strong {
+  background: rgba(255, 255, 255, 0.07);
+  backdrop-filter: blur(40px);
+  -webkit-backdrop-filter: blur(40px);
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* ================================================
+   Glow effects
+   ================================================ */
+.glow-purple {
+  box-shadow: 0 0 30px rgba(124, 58, 237, 0.3), 0 0 60px rgba(124, 58, 237, 0.1);
+}
+
+.glow-purple-sm {
+  box-shadow: 0 0 15px rgba(124, 58, 237, 0.25);
+}
+
+/* ================================================
+   Gradiente de borda (border gradient)
+   ================================================ */
+.border-gradient {
+  position: relative;
+  background: var(--bg-card);
+  border-radius: 16px;
+}
+.border-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  padding: 1px;
+  background: linear-gradient(135deg, rgba(124,58,237,0.5), rgba(168,85,247,0.2), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
+  pointer-events: none;
+}
+
+/* ================================================
+   Grain texture overlay
+   ================================================ */
+.grain::after {
+  content: '';
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.04;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  z-index: 9999;
+}
+
+/* ================================================
+   Animações
+   ================================================ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to   { opacity: 1; }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0px); }
+  50%       { transform: translateY(-10px); }
+}
+
+@keyframes pulse-glow {
+  0%, 100% { box-shadow: 0 0 20px rgba(124,58,237,0.3); }
+  50%       { box-shadow: 0 0 40px rgba(124,58,237,0.6), 0 0 80px rgba(124,58,237,0.2); }
+}
+
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position: 200% center; }
+}
+
+@keyframes spin-slow {
+  from { transform: rotate(0deg); }
+  to   { transform: rotate(360deg); }
+}
+
+.animate-fade-in-up { animation: fadeInUp 0.6s ease-out both; }
+.animate-fade-in    { animation: fadeIn 0.4s ease-out both; }
+.animate-float      { animation: float 3s ease-in-out infinite; }
+.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
+.animate-spin-slow  { animation: spin-slow 8s linear infinite; }
+
+.animation-delay-100 { animation-delay: 0.1s; }
+.animation-delay-200 { animation-delay: 0.2s; }
+.animation-delay-300 { animation-delay: 0.3s; }
+.animation-delay-400 { animation-delay: 0.4s; }
+.animation-delay-500 { animation-delay: 0.5s; }
+.animation-delay-600 { animation-delay: 0.6s; }
+
+/* ================================================
+   Shimmer loading skeleton
+   ================================================ */
+.shimmer {
+  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s infinite;
+}
+
+/* ================================================
+   Hover card lift
+   ================================================ */
+.hover-lift {
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+.hover-lift:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(124,58,237,0.15);
+}
+
+/* ================================================
+   Before/After slider
+   ================================================ */
+.before-after-slider input[type="range"] {
+  -webkit-appearance: none;
+  appearance: none;
+  background: transparent;
+  cursor: ew-resize;
+  width: 100%;
+}
+.before-after-slider input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: white;
+  border: 3px solid #7C3AED;
+  box-shadow: 0 0 15px rgba(124,58,237,0.5);
+  cursor: ew-resize;
+}
+
+/* ================================================
+   Custom focus ring acessível
+   ================================================ */
+.focus-ring:focus-visible {
+  outline: 2px solid #7C3AED;
+  outline-offset: 2px;
+}
+
+/* ================================================
+   Gradient button
+   ================================================ */
+.btn-gradient {
+  background: linear-gradient(135deg, #7C3AED, #A855F7);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn-gradient::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #A855F7, #7C3AED);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+.btn-gradient:hover::before { opacity: 1; }
+.btn-gradient > * { position: relative; z-index: 1; }
+
+/* ================================================
+   Masonry grid
+   ================================================ */
+.masonry-grid {
+  columns: 3;
+  column-gap: 1rem;
+}
+@media (max-width: 768px) {
+  .masonry-grid { columns: 1; }
+}
+@media (min-width: 769px) and (max-width: 1024px) {
+  .masonry-grid { columns: 2; }
+}
+.masonry-item {
+  break-inside: avoid;
+  margin-bottom: 1rem;
+}
+
+/* Cursor padrão gerenciado pelo componente CustomCursor.tsx */
+
+/* ================================================
+   Linha gradiente decorativa
+   ================================================ */
+.divider-gradient {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, rgba(124,58,237,0.5), transparent);
+}
