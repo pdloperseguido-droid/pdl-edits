@@ -41,23 +41,6 @@ export function Footer() {
       {/* Background Grid Sutil - similar ao da imagem */}
       <div className="absolute inset-0 -z-10 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
 
-      {/* Seção Discord Centrada */}
-      <FadeInSection direction="up">
-        <div className="max-w-4xl mx-auto px-4 py-24 text-center">
-          <p className="text-zinc-400 text-lg md:text-xl mb-10 max-w-2xl mx-auto leading-relaxed">
-            Entre no servidor e tire suas dúvidas diretamente comigo ou com a comunidade.
-          </p>
-          <a
-            href="https://discord.gg/Wg8f3e28yv"
-            target="_blank"
-            rel="noopener noreferrer"
-            className="inline-flex items-center gap-3 bg-[#5865F2] hover:bg-[#4752C4] text-white font-bold px-10 py-5 rounded-2xl text-lg transition-all duration-300 hover:scale-105 hover:shadow-[0_0_30px_rgba(88,101,242,0.4)] group"
-          >
-            <DiscordIcon className="w-6 h-6 transition-transform group-hover:rotate-12" />
-            Entrar no Discord
-          </a>
-        </div>
-      </FadeInSection>
 
       {/* Links grid */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 border-t border-white/5">
@@ -91,21 +74,6 @@ export function Footer() {
               </div>
             </div>
 
-            {/* Redes Sociais Compactas */}
-            <div className="flex items-center gap-3 mt-8">
-              {SOCIALS.map(({ icon: Icon, href, label }) => (
-                <a
-                  key={label}
-                  href={href}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="w-10 h-10 rounded-xl bg-white/5 border border-white/8 flex items-center justify-center text-zinc-400 hover:text-white hover:border-white/20 hover:bg-white/10 transition-all duration-300"
-                  aria-label={label}
-                >
-                  <Icon className="w-5 h-5" />
-                </a>
-              ))}
-            </div>
           </div>
 
           {/* Colunas de Links */}

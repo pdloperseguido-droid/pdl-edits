@@ -100,11 +100,6 @@ export function TestimonialsSection() {
                       </span>
                       <span className="text-xs text-zinc-500 whitespace-nowrap">{comment.time}</span>
                     </div>
-                    {/* Like Action */}
-                    <div className="flex flex-col items-center gap-0.5 group/like cursor-pointer">
-                      <Heart className="w-4 h-4 text-zinc-500 group-hover/like:text-rose-500 group-hover/like:fill-rose-500 transition-all" />
-                      <span className="text-[10px] text-zinc-500 group-hover/like:text-rose-400">{comment.likes}</span>
-                    </div>
                   </div>
 
                   {/* Comment Text */}
@@ -112,28 +107,12 @@ export function TestimonialsSection() {
                     {comment.text}
                   </p>
 
-                  {/* Actions */}
-                  <div className="flex items-center gap-4">
-                    <button className="text-[13px] font-bold text-zinc-500 hover:text-zinc-300 transition-colors">
-                      Responder
-                    </button>
-                    <div className="flex items-center gap-1 text-zinc-600">
-                       <MessageCircle className="w-3 h-3" />
-                       <span className="text-[11px]">Ver traduções</span>
-                    </div>
-                  </div>
                 </div>
               </div>
             </div>
           ))}
         </div>
 
-        {/* Footer Link */}
-        <div className="mt-16 text-center">
-           <button className="px-8 py-4 rounded-2xl bg-white/5 border border-white/10 text-zinc-400 font-bold hover:bg-white/10 hover:text-white transition-all font-display">
-              Ver todos os 2,481 comentários
-           </button>
-        </div>
       </div>
     </section>
   );
