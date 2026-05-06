@@ -28,6 +28,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const features = JSON.parse(service.features || '[]');
   const notIncluded = JSON.parse(service.notIncluded || '[]');
   const tags = (service.tags || '').split(',');
+  const rating = 5.0;
+  const reviews = 24;
 
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6">
@@ -43,7 +45,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
           <div className="lg:col-span-2 space-y-8">
             {/* Hero da página */}
             <div className="relative rounded-2xl overflow-hidden h-72 md:h-96">
-              <img src={service.thumbnailUrl} alt={service.title} className="w-full h-full object-cover" />
+              <img src={service.thumbnailUrl || 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1000&auto=format&fit=crop'} alt={service.title} className="w-full h-full object-cover" />
               <div className="absolute inset-0 bg-gradient-to-t from-black/70 to-transparent" />
               <div className="absolute bottom-6 left-6">
                 <Badge variant="category" className="mb-3">{service.category}</Badge>
@@ -55,11 +57,11 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
             <div className="flex items-center gap-3">
               <div className="flex">
                 {Array.from({ length: 5 }).map((_, i) => (
-                  <Star key={i} className={`w-5 h-5 ${i < Math.floor(service.rating) ? 'text-amber-400 fill-amber-400' : 'text-zinc-600'}`} />
+                  <Star key={i} className={`w-5 h-5 ${i < Math.floor(rating) ? 'text-amber-400 fill-amber-400' : 'text-zinc-600'}`} />
                 ))}
               </div>
-              <span className="text-zinc-300 font-semibold">{service.rating}</span>
-              <span className="text-zinc-500 text-sm">({service.reviews} avaliações)</span>
+              <span className="text-zinc-300 font-semibold">{rating.toFixed(1)}</span>
+              <span className="text-zinc-500 text-sm">({reviews} avaliações)</span>
             </div>
 
             {/* Descrição */}

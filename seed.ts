@@ -1,5 +1,5 @@
 import { db } from './lib/db';
-import { users, services, orders } from './lib/db/schema';
+import { users, services, orders, portfolio } from './lib/db/schema';
 import bcrypt from 'bcryptjs';
 import { randomUUID } from 'crypto';
 
@@ -8,6 +8,7 @@ async function seed() {
   await db.delete(orders);
   await db.delete(users);
   await db.delete(services);
+  await db.delete(portfolio);
   
   console.log('Seeding...');
 

@@ -10,7 +10,7 @@ import { Button } from '@/components/ui/Button';
 import { NotificationBadge } from '@/components/ui/Badge';
 import { getUnreadCount } from '@/server/actions/messages';
 
-const NAV_LINKS = [
+const NAV_LINKS: { href: string; label: string; external?: boolean }[] = [
   { href: '/', label: 'Início' },
   { href: '/portfolio', label: 'Portfólio' },
   { href: '/catalogo', label: 'Serviços' },

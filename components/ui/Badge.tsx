@@ -3,7 +3,7 @@ import { STATUS_LABELS, STATUS_COLORS } from '@/lib/utils';
 import type { HTMLAttributes } from 'react';
 
 interface BadgeProps extends HTMLAttributes<HTMLSpanElement> {
-  variant?: 'default' | 'status' | 'category';
+  variant?: 'default' | 'status' | 'category' | 'primary' | 'secondary';
   status?: string;
   size?: 'sm' | 'md';
 }
@@ -21,7 +21,11 @@ export function Badge({ variant = 'default', status, size = 'md', className, chi
           ? STATUS_COLORS[status] ?? 'text-zinc-400 bg-zinc-400/10 border-zinc-400/20'
           : variant === 'category'
             ? 'text-violet-300 bg-violet-500/10 border-violet-500/20'
-            : 'text-zinc-300 bg-white/5 border-white/10',
+            : variant === 'primary'
+              ? 'text-white bg-violet-600 border-violet-500'
+              : variant === 'secondary'
+                ? 'text-zinc-300 bg-zinc-800/50 border-white/10'
+                : 'text-zinc-300 bg-white/5 border-white/10',
         className
       )}
       {...props}
