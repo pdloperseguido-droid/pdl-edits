@@ -8,6 +8,13 @@
       "when": 1777345630286,
       "tag": "0000_simple_beast",
       "breakpoints": true
+    },
+    {
+      "idx": 1,
+      "version": "5",
+      "when": 1778049797680,
+      "tag": "0001_manual_migration",
+      "breakpoints": true
     }
   ]
 }
