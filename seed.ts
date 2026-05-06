@@ -39,6 +39,7 @@ async function seed() {
   const videoServiceId = randomUUID();
   const thumbnailServiceId = randomUUID();
   const motionServiceId = randomUUID();
+  const comboServiceId = randomUUID();
 
   await db.insert(services).values([
     {
@@ -87,7 +88,23 @@ async function seed() {
       notIncluded: JSON.stringify(['Design de logo (apenas animação)', 'Mais de 3min de animação', 'Modelagem 3D']),
       tags: 'After Effects,Intros,Títulos,Logos,YouTube,Comerciais',
       isFeatured: false,
-      sortOrder: 2,
+      sortOrder: 3,
+    },
+    {
+      id: comboServiceId,
+      slug: 'combo-highlight-thumbnail',
+      title: 'Combo: Highlight + Thumbnail',
+      category: 'Promocional',
+      price: '59.90',
+      deliveryDays: 2,
+      description: 'O pacote perfeito para seu canal! Editamos seu highlight com cortes dinâmicos e colorização premium, e ainda criamos uma thumbnail de alta conversão para garantir o máximo de cliques. Economize com este combo exclusivo.',
+      shortDescription: 'Highlight profissional + Thumbnail de alta conversão em um só pacote.',
+      thumbnailUrl: 'https://images.unsplash.com/photo-1542751371-adc38448a05e?w=1200&q=90',
+      features: JSON.stringify(['Edição de Highlight (até 10min)', 'Thumbnail Personalizada', 'Color Grading incluso', 'Trilha Sonora Licenciada', '2 Revisões Gratuitas', 'Entrega em 48h']),
+      notIncluded: JSON.stringify(['Gravação de conteúdo', 'Locução']),
+      tags: 'Combo,YouTube,Gaming,Promoção',
+      isFeatured: true,
+      sortOrder: 0,
     },
   ]);
 

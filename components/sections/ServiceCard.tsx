@@ -99,6 +99,9 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
             </div>
             <div className="text-right">
               <span className="block text-[10px] text-zinc-500 uppercase font-black tracking-widest mb-0.5">A partir de</span>
+              {service.slug === 'combo-highlight-thumbnail' && (
+                <span className="text-xs text-zinc-500 line-through mr-2 font-bold">R$ 75,00</span>
+              )}
               <span className="text-2xl font-black text-white">{formatPrice(Number(service.price))}</span>
             </div>
           </div>
