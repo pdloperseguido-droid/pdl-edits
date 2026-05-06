@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+export const dynamic = 'force-dynamic';
 import Link from 'next/link';
 import { ArrowRight, MessageSquare, Clock, Star, Zap, Shield, Film } from 'lucide-react';
 import { HeroSection } from '@/components/sections/HeroSection';

@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+export const dynamic = 'force-dynamic';
 import { ServiceCard } from '@/components/sections/ServiceCard';
 import { getActiveServices } from '@/server/actions/services';
 

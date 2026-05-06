@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+export const dynamic = 'force-dynamic';
 import { getPortfolioItems } from '@/server/actions/portfolio';
 import { PortfolioGrid } from './PortfolioGrid';
 import { FeaturesGrid } from '@/components/sections/FeaturesGrid';
