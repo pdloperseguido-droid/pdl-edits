@@ -62,6 +62,9 @@ export function PortfolioCard({ item }: PortfolioCardProps) {
               alt={`${item.title} — resultado`}
               className="w-full h-full object-cover"
               loading="lazy"
+              onError={(e) => {
+                (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1000&auto=format&fit=crop';
+              }}
             />
 
             {/* Imagem "antes" com clip */}
@@ -74,6 +77,9 @@ export function PortfolioCard({ item }: PortfolioCardProps) {
                 alt={`${item.title} — antes`}
                 className="w-full h-full object-cover"
                 loading="lazy"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1519741497674-611481863552?q=80&w=1000&auto=format&fit=crop';
+                }}
               />
               {/* Label ANTES */}
               <div className="absolute top-3 left-3 glass text-[10px] font-bold px-2 py-0.5 rounded text-white">
