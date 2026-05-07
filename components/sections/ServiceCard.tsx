@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { ArrowRight, Check, Clock, Star } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
-import { formatPrice } from '@/lib/utils';
+import { formatPrice, safeParseJSON } from '@/lib/utils';
 
 interface ServiceCardProps {
   service: any;
@@ -12,7 +12,7 @@ interface ServiceCardProps {
 }
 
 export function ServiceCard({ service, index }: ServiceCardProps) {
-  const features = JSON.parse(service.features || '[]');
+  const features = safeParseJSON<string[]>(service.features, []);
   const tags = (service.tags || '').split(',').filter(Boolean);
   
   // Corrigir erro de digitação comum do usuário no banco (Higlights -> Highlights)

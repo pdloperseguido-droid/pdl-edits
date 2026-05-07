@@ -1,4 +1,5 @@
 import type { Metadata } from 'next';
+import { safeParseJSON } from '@/lib/utils';
 import { auth } from '@/lib/auth/config';
 import { redirect } from 'next/navigation';
 import { getAllServices } from '@/server/actions/services';
@@ -16,8 +17,8 @@ export default async function CatalogoAdminPage() {
   // Tratamento para o cliente (parse de JSON strings para arrays)
   const services = dbServices.map(s => ({
     ...s,
-    features: JSON.parse(s.features || '[]'),
-    notIncluded: JSON.parse(s.notIncluded || '[]'),
+    features: safeParseJSON<string[]>(s.features, []),
+    notIncluded: safeParseJSON<string[]>(s.notIncluded, []),
     tags: (s.tags || '').split(',').filter(Boolean),
   }));
 

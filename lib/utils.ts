@@ -80,3 +80,16 @@ export function slugify(text: string): string {
     .replace(/[^a-z0-9]+/g, '-')
     .replace(/(^-|-$)/g, '');
 }
+
+/**
+ * Faz parse de JSON com segurança — nunca lança exceção.
+ * Retorna `fallback` se a string for vazia, null, undefined ou JSON inválido.
+ */
+export function safeParseJSON<T = unknown>(value: string | null | undefined, fallback: T): T {
+  if (!value || !value.trim()) return fallback;
+  try {
+    return JSON.parse(value) as T;
+  } catch {
+    return fallback;
+  }
+}

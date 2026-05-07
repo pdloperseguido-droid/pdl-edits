@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { safeParseJSON } from '@/lib/utils';
 import { getActiveServices } from '@/server/actions/services';
 
 const ICON_MAP: Record<string, string> = {
@@ -26,7 +27,7 @@ export async function FeaturedServicesSection() {
 
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
           {dbServices.map((service, i) => {
-            const features = JSON.parse(service.features || '[]');
+            const features = safeParseJSON<string[]>(service.features, []);
             const icon = ICON_MAP[service.slug] || '✨';
 
             return (

@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { Check, X, Clock, ArrowLeft, Star, ShoppingCart, Shield } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
 import { Badge } from '@/components/ui/Badge';
-import { formatPrice } from '@/lib/utils';
+import { formatPrice, safeParseJSON } from '@/lib/utils';
 import { OrderForm } from './OrderForm';
 
 import { getServiceBySlug } from '@/server/actions/services';
@@ -26,8 +26,8 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
 
   if (!service) notFound();
 
-  const features = JSON.parse(service.features || '[]');
-  const notIncluded = JSON.parse(service.notIncluded || '[]');
+  const features = safeParseJSON<string[]>(service.features, []);
+  const notIncluded = safeParseJSON<string[]>(service.notIncluded, []);
   const tags = (service.tags || '').split(',');
   const rating = 5.0;
   const reviews = 24;
