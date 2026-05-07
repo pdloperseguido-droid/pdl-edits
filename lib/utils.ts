@@ -83,10 +83,18 @@ export function slugify(text: string): string {
 
 /**
  * Faz parse de JSON com segurança — nunca lança exceção.
- * Retorna `fallback` se a string for vazia, null, undefined ou JSON inválido.
+ * - Se `value` já for um array/objeto, retorna diretamente.
+ * - Se for string vazia, null, undefined ou JSON inválido, retorna `fallback`.
  */
-export function safeParseJSON<T = unknown>(value: string | null | undefined, fallback: T): T {
-  if (!value || !value.trim()) return fallback;
+export function safeParseJSON<T = unknown>(value: unknown, fallback: T): T {
+  // Já está parseado (driver MySQL às vezes retorna o objeto diretamente)
+  if (Array.isArray(value) || (typeof value === 'object' && value !== null)) {
+    return value as T;
+  }
+  // Não é string — retorna fallback
+  if (typeof value !== 'string') return fallback;
+  // String vazia
+  if (!value.trim()) return fallback;
   try {
     return JSON.parse(value) as T;
   } catch {
