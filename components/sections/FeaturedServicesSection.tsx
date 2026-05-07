@@ -1,6 +1,7 @@
 import Link from 'next/link';
 import { ArrowRight, Check } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { ServiceThumbnail } from '@/components/ui/ServiceThumbnail';
 import { safeParseJSON } from '@/lib/utils';
 import { getActiveServices } from '@/server/actions/services';
 
@@ -49,18 +50,11 @@ export async function FeaturedServicesSection() {
                 )}
 
                 {/* Thumbnail Preview */}
-                <div className="relative h-48 overflow-hidden">
-                  <img
-                    src={service.thumbnailUrl || 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1000&auto=format&fit=crop'}
-                    alt={service.title}
-                    className="w-full h-full object-cover transition-transform duration-700 group-hover:scale-110"
-                    onError={(e) => {
-                      (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1574717024653-61fd2cf4d44d?q=80&w=1000&auto=format&fit=crop';
-                    }}
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent" />
-                  <span className="absolute bottom-3 left-4 text-3xl" aria-hidden="true">{icon}</span>
-                </div>
+                <ServiceThumbnail
+                  src={service.thumbnailUrl}
+                  alt={service.title}
+                  icon={icon}
+                />
 
                 {/* Card Body */}
                 <div className="p-6 flex flex-col gap-4 flex-1">

@@ -1,3 +1,5 @@
+'use client';
+
 import { cn, STATUS_LABELS, STATUS_COLORS } from '@/lib/utils';
 import type { OrderStatus } from '@/lib/db/schema';
 
