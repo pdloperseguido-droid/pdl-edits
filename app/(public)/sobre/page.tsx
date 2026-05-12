@@ -1,5 +1,5 @@
 import type { Metadata } from 'next';
-import { Film, Zap, Shield, Heart, Users, MessageSquare, Sparkles, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { Film, Zap, Shield, Heart, Users, MessageSquare, Sparkles, ArrowRight, CheckCircle2, Clock, Star, MessageCircle } from 'lucide-react';
 
 export const metadata: Metadata = {
   title: 'Sobre | PDL Edits',
@@ -29,34 +29,62 @@ export default function SobrePage() {
         </div>
       </div>
 
-      {/* Stats/Values Grid */}
-      <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-        <div className="glass border border-white/5 rounded-3xl p-8 space-y-4">
-          <div className="w-12 h-12 rounded-2xl bg-violet-500/10 flex items-center justify-center">
-            <Zap className="w-6 h-6 text-violet-400" />
-          </div>
-          <h3 className="text-xl font-bold text-white">Agilidade Real</h3>
-          <p className="text-sm text-zinc-500 leading-relaxed">
-            Entregamos qualidade premium em tempo recorde, respeitando seus prazos e a dinâmica das redes sociais.
-          </p>
+      {/* Why Choose Us Section */}
+      <div className="space-y-12">
+        <div className="text-center">
+          <h2 className="text-3xl lg:text-4xl font-bold text-white">
+            Por que escolher a <span className="text-violet-500">PDL Edits?</span>
+          </h2>
         </div>
-        <div className="glass border border-white/5 rounded-3xl p-8 space-y-4">
-          <div className="w-12 h-12 rounded-2xl bg-fuchsia-500/10 flex items-center justify-center">
-            <Shield className="w-6 h-6 text-fuchsia-400" />
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="glass border border-white/5 rounded-3xl p-8 text-center space-y-5 hover:border-violet-500/20 transition-all group">
+            <div className="w-14 h-14 rounded-2xl bg-violet-500/10 flex items-center justify-center mx-auto ring-1 ring-white/5 group-hover:ring-violet-500/30 transition-all">
+              <Shield className="w-7 h-7 text-violet-400" />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-lg font-bold text-white">Satisfação garantida</h3>
+              <p className="text-sm text-zinc-500 leading-relaxed">
+                Revisões ilimitadas até você ficar satisfeito.
+              </p>
+            </div>
           </div>
-          <h3 className="text-xl font-bold text-white">Qualidade Garantida</h3>
-          <p className="text-sm text-zinc-500 leading-relaxed">
-            Cada frame é revisado minuciosamente para garantir que sua marca seja representada da melhor forma possível.
-          </p>
-        </div>
-        <div className="glass border border-white/5 rounded-3xl p-8 space-y-4">
-          <div className="w-12 h-12 rounded-2xl bg-emerald-500/10 flex items-center justify-center">
-            <Heart className="w-6 h-6 text-emerald-400" />
+
+          <div className="glass border border-white/5 rounded-3xl p-8 text-center space-y-5 hover:border-violet-500/20 transition-all group">
+            <div className="w-14 h-14 rounded-2xl bg-violet-500/10 flex items-center justify-center mx-auto ring-1 ring-white/5 group-hover:ring-violet-500/30 transition-all">
+              <Clock className="w-7 h-7 text-violet-400" />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-lg font-bold text-white">Entrega no prazo</h3>
+              <p className="text-sm text-zinc-500 leading-relaxed">
+                Cumprimos sempre o prazo acordado, sem desculpas.
+              </p>
+            </div>
           </div>
-          <h3 className="text-xl font-bold text-white">Paixão Criativa</h3>
-          <p className="text-sm text-zinc-500 leading-relaxed">
-            Colocamos nossa alma em cada projeto. Seus objetivos de crescimento são também os nossos.
-          </p>
+
+          <div className="glass border border-white/5 rounded-3xl p-8 text-center space-y-5 hover:border-violet-500/20 transition-all group">
+            <div className="w-14 h-14 rounded-2xl bg-violet-500/10 flex items-center justify-center mx-auto ring-1 ring-white/5 group-hover:ring-violet-500/30 transition-all">
+              <Star className="w-7 h-7 text-violet-400" />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-lg font-bold text-white">Qualidade premium</h3>
+              <p className="text-sm text-zinc-500 leading-relaxed">
+                Editores experientes com ferramentas profissionais.
+              </p>
+            </div>
+          </div>
+
+          <div className="glass border border-white/5 rounded-3xl p-8 text-center space-y-5 hover:border-violet-500/20 transition-all group">
+            <div className="w-14 h-14 rounded-2xl bg-violet-500/10 flex items-center justify-center mx-auto ring-1 ring-white/5 group-hover:ring-violet-500/30 transition-all">
+              <MessageCircle className="w-7 h-7 text-violet-400" />
+            </div>
+            <div className="space-y-2">
+              <h3 className="text-lg font-bold text-white">Suporte direto</h3>
+              <p className="text-sm text-zinc-500 leading-relaxed">
+                Chat exclusivo com o editor para cada pedido.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
 
