@@ -13,6 +13,7 @@ import { getUnreadCount } from '@/server/actions/messages';
 const NAV_LINKS: { href: string; label: string; external?: boolean }[] = [
   { href: '/', label: 'Início' },
   { href: '/portfolio', label: 'Portfólio' },
+  { href: '/sobre', label: 'Sobre' },
   { href: '/catalogo', label: 'Serviços' },
 ];
 
