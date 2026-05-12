@@ -16,6 +16,8 @@ const pool = mysql.createPool({
   waitForConnections: true,
   connectionLimit: process.env.NODE_ENV === 'production' ? 10 : 5,
   queueLimit: 0,
+  // Força a conexão a usar a collation correta para evitar erros de mix
+  charset: 'UTF8MB4_0900_AI_CI',
 });
 
 export const db = (globalForDb.__db ?? drizzle(pool, { schema, mode: 'default' })) as ReturnType<typeof drizzle<typeof schema>>;
