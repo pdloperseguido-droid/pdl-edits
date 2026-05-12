@@ -85,47 +85,6 @@ function HowItWorksSection() {
 }
 
 
-// Seção de garantias
-function GuaranteesSection() {
-  const items = [
-    { icon: Shield, title: 'Satisfação garantida', desc: 'Revisões ilimitadas até você ficar satisfeito.' },
-    { icon: Clock, title: 'Entrega no prazo', desc: 'Cumprimos sempre o prazo acordado, sem desculpas.' },
-    { icon: Star, title: 'Qualidade premium', desc: 'Editores experientes com ferramentas profissionais.' },
-    { icon: MessageSquare, title: 'Suporte direto', desc: 'Chat exclusivo com o editor para cada pedido.' },
-  ];
-
-  return (
-    <section className="py-24 px-4 sm:px-6" aria-labelledby="guarantees-title">
-      <div className="max-w-7xl mx-auto">
-        <div className="text-center mb-16">
-          <h2 id="guarantees-title" className="text-4xl font-bold font-display">
-            Por que escolher a <span className="text-gradient">PDL Edits?</span>
-          </h2>
-        </div>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {items.map((item, i) => {
-            const Icon = item.icon;
-            return (
-              <div
-                key={i}
-                className="glass border border-white/5 rounded-2xl p-6 text-center animate-fade-in-up bg-transparent"
-                style={{ animationDelay: `${i * 0.1}s` }}
-              >
-                <div className="w-12 h-12 rounded-xl bg-violet-500/15 border border-violet-500/20 flex items-center justify-center mx-auto mb-4">
-                  <Icon className="w-6 h-6 text-violet-400" aria-hidden="true" />
-                </div>
-                <h3 className="font-bold font-display text-white mb-2">{item.title}</h3>
-                <p className="text-sm text-zinc-500 leading-relaxed">{item.desc}</p>
-              </div>
-            );
-          })}
-        </div>
-      </div>
-    </section>
-  );
-}
-
 import { FadeInSection } from '@/components/ui/FadeInSection';
 
 /** Página inicial */
@@ -148,10 +107,6 @@ export default async function HomePage() {
 
       <FadeInSection>
         <TestimonialsSection />
-      </FadeInSection>
-
-      <FadeInSection>
-        <GuaranteesSection />
       </FadeInSection>
     </div>
   );
