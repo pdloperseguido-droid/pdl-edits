@@ -3,6 +3,7 @@ import { OrderStatusBadge } from './OrderStatusBadge';
 import { formatPrice, formatDate, cn } from '@/lib/utils';
 import { OrderStatus } from '@/lib/db/schema';
 import Link from 'next/link';
+import { LinkifiedText } from '@/components/ui/LinkifiedText';
 
 interface OrderDetailsSheetProps {
   order: any;
@@ -119,8 +120,11 @@ export function OrderDetailsSheet({ order, isOpen, onClose }: OrderDetailsSheetP
           {order.notes && (
             <div>
               <h4 className="text-xs font-black text-zinc-500 uppercase tracking-widest mb-3">Observações</h4>
-              <div className="p-4 bg-white/[0.02] border border-white/5 rounded-2xl text-sm text-zinc-400 leading-relaxed italic">
-                "{order.notes}"
+              <div className="p-4 bg-white/[0.02] border border-white/5 rounded-2xl">
+                <LinkifiedText 
+                  text={order.notes} 
+                  className="text-sm text-zinc-400 leading-relaxed italic block" 
+                />
               </div>
             </div>
           )}

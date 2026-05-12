@@ -6,6 +6,7 @@ import { auth } from '@/lib/auth/config';
 import { getOrderById } from '@/server/actions/orders';
 import { getMessages } from '@/server/actions/messages';
 import { ChatInterface } from '@/components/chat/ChatInterface';
+import { LinkifiedText } from '@/components/ui/LinkifiedText';
 import { OrderStatusBadge } from '@/components/chat/OrderStatusBadge';
 import { formatPrice, formatDate } from '@/lib/utils';
 import type { OrderStatus } from '@/lib/db/schema';
@@ -74,7 +75,10 @@ export default async function AdminChatPage({ params }: { params: Promise<{ id: 
           {order.notes && (
             <div>
               <p className="text-xs text-zinc-500 uppercase tracking-wider mb-2">Observações</p>
-              <p className="text-sm text-zinc-300 leading-relaxed">{order.notes}</p>
+              <LinkifiedText 
+                text={order.notes} 
+                className="text-sm text-zinc-300 leading-relaxed block" 
+              />
             </div>
           )}
 

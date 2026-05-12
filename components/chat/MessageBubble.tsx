@@ -1,5 +1,6 @@
 import { cn, formatRelativeTime } from '@/lib/utils';
 import { Check, CheckCheck, FileText, Download, PlayCircle } from 'lucide-react';
+import { LinkifiedText } from '@/components/ui/LinkifiedText';
 
 interface MessageBubbleProps {
   content: string;
@@ -122,12 +123,14 @@ export function MessageBubble({
 
             {/* Texto da mensagem */}
             {content && (
-              <p className={cn(
-                "text-sm leading-relaxed whitespace-pre-wrap break-words font-medium",
-                isOwnMessage ? "text-white" : "text-zinc-200"
-              )}>
-                {content}
-              </p>
+              <LinkifiedText 
+                text={content}
+                className={cn(
+                  "text-sm leading-relaxed font-medium block",
+                  isOwnMessage ? "text-white" : "text-zinc-200"
+                )}
+                linkClassName={isOwnMessage ? "text-white underline decoration-white/40 hover:decoration-white" : "text-violet-400"}
+              />
             )}
           </div>
         </div>
