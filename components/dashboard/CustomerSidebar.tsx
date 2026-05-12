@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 import { 
   User, ShoppingBag, LogOut, Film as FilmIcon, 
-  X, Menu, ChevronRight, LayoutDashboard, Settings
+  X, Menu, ChevronRight, LayoutDashboard, Settings, Info
 } from 'lucide-react';
 import { cn } from '@/lib/utils';
 
@@ -23,9 +23,11 @@ export function CustomerSidebar({ session, isAdmin }: CustomerSidebarProps) {
     { href: '/dashboard/pedidos', icon: ShoppingBag, label: 'Pedidos' },
     { href: '/dashboard/portfolio', icon: FilmIcon, label: 'Portfólio' },
     { href: '/dashboard/catalogo', icon: Settings, label: 'Catálogo' },
+    { href: '/sobre', icon: Info, label: 'Sobre' },
   ] : [
     { href: '/minha-conta', icon: User, label: 'Minha Conta' },
     { href: '/minha-conta', icon: ShoppingBag, label: 'Meus Pedidos' },
+    { href: '/sobre', icon: Info, label: 'Sobre' },
   ];
 
   const SidebarContent = () => (
