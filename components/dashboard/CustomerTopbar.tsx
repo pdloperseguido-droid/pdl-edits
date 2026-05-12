@@ -38,7 +38,7 @@ export function CustomerTopbar({ onFilterClick }: CustomerTopbarProps) {
            <input 
             type="text" 
             value={searchTerm}
-            onChange={handleSearch}
+            onChange={(e) => setSearchTerm(e.target.value)}
             placeholder="Buscar por ID, serviço ou status..." 
             className="bg-transparent border-none text-xs font-medium text-white focus:ring-0 w-full placeholder:text-zinc-600 tracking-wide" 
            />
