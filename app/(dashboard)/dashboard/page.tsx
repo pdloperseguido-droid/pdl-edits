@@ -33,8 +33,8 @@ export default async function DashboardPage() {
         service: { title: services.title },
       })
       .from(orders)
-      .leftJoin(users, eq(orders.userId, users.id))
-      .leftJoin(services, eq(orders.serviceId, services.id))
+      .leftJoin(users, sql`${orders.userId} = ${users.id} COLLATE utf8mb4_0900_ai_ci`)
+      .leftJoin(services, sql`${orders.serviceId} = ${services.id} COLLATE utf8mb4_0900_ai_ci`)
       .orderBy(desc(orders.createdAt))
       .limit(5),
     db.select({ count: count() }).from(messages).where(eq(messages.isRead, false)),

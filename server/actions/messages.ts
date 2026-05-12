@@ -1,7 +1,7 @@
 'use server';
 
 import { revalidatePath } from 'next/cache';
-import { eq, and, desc } from 'drizzle-orm';
+import { eq, and, desc, sql } from 'drizzle-orm';
 import { randomUUID } from 'crypto';
 import { auth } from '@/lib/auth/config';
 import { db } from '@/lib/db';
@@ -103,7 +103,7 @@ export async function getMessages(orderId: string) {
       },
     })
     .from(messages)
-    .leftJoin(users, eq(messages.senderId, users.id))
+    .leftJoin(users, sql`${messages.senderId} = ${users.id} COLLATE utf8mb4_0900_ai_ci`)
     .where(eq(messages.orderId, orderId))
     .orderBy(desc(messages.createdAt));
 
@@ -142,7 +142,7 @@ export async function getUnreadCount() {
         isRead: messages.isRead,
       })
       .from(messages)
-      .leftJoin(users, eq(messages.senderId, users.id))
+      .leftJoin(users, sql`${messages.senderId} = ${users.id} COLLATE utf8mb4_0900_ai_ci`)
       .where(eq(messages.isRead, false));
 
     return result.filter((m) => m.role === 'CLIENT').length;
@@ -154,7 +154,7 @@ export async function getUnreadCount() {
         isRead: messages.isRead,
       })
       .from(messages)
-      .leftJoin(users, eq(messages.senderId, users.id))
+      .leftJoin(users, sql`${messages.senderId} = ${users.id} COLLATE utf8mb4_0900_ai_ci`)
       .leftJoin(orders, eq(messages.orderId, orders.id))
       .where(eq(messages.isRead, false));
 
