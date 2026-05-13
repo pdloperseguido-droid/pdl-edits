@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 
 export default function SobrePage() {
   return (
-    <div className="max-w-5xl mx-auto space-y-16 pb-20">
+    <div className="max-w-5xl mx-auto space-y-16 pt-32 pb-20">
       {/* Hero Section */}
       <div className="relative overflow-hidden rounded-[3rem] bg-white/[0.02] border border-white/5 p-10 lg:p-20 text-center">
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-violet-600/10 to-transparent pointer-events-none" />

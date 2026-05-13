@@ -16,7 +16,7 @@ export default async function PortfolioPage() {
   const dynamicCategories = ['Todos', ...Array.from(new Set(items.map(i => i.category)))];
 
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6">
+    <div className="min-h-screen pt-32 pb-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         {/* Header */}
         <div className="text-center mb-16">

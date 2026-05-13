@@ -13,7 +13,7 @@ export default async function CatalogoPage() {
   const dbServices = await getActiveServices();
   
   return (
-    <div className="min-h-screen py-24 px-4 sm:px-6 relative overflow-hidden">
+    <div className="min-h-screen pt-32 pb-24 px-4 sm:px-6 relative overflow-hidden">
       {/* Background Glows */}
       <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-violet-600/5 blur-[120px] rounded-full -z-10" />
       <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-fuchsia-600/5 blur-[120px] rounded-full -z-10" />

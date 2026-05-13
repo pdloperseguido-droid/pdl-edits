@@ -33,7 +33,7 @@ export default async function ServicePage({ params }: { params: Promise<{ slug: 
   const reviews = 24;
 
   return (
-    <div className="min-h-screen py-12 px-4 sm:px-6">
+    <div className="min-h-screen pt-32 pb-12 px-4 sm:px-6">
       <div className="max-w-7xl mx-auto">
         {/* Breadcrumb */}
         <Link href="/catalogo" className="inline-flex items-center gap-2 text-sm text-zinc-500 hover:text-zinc-300 mb-8 transition-colors group">
