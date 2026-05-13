@@ -45,7 +45,7 @@ export default function SobrePage() {
             <div className="space-y-2">
               <h3 className="text-lg font-bold text-white">Satisfação garantida</h3>
               <p className="text-sm text-zinc-500 leading-relaxed">
-                Revisões ilimitadas até você ficar satisfeito.
+                Ajustes e revisões para garantir sua satisfação.
               </p>
             </div>
           </div>
