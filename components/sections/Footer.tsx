@@ -1,6 +1,6 @@
 import Link from 'next/link';
-import { Film, Mail, MapPin, Phone, ArrowUpRight, Camera, Video, MessageCircle } from 'lucide-react';
-import { FadeInSection } from '@/components/ui/FadeInSection';
+import { Mail, MapPin, ArrowRight, Camera, Video, Send, Shield, Zap, MessageSquare } from 'lucide-react';
+import { Button } from '@/components/ui/Button';
 
 const FOOTER_LINKS = {
   servicos: [
@@ -9,124 +9,187 @@ const FOOTER_LINKS = {
     { label: 'Color Grading', href: '/catalogo' },
     { label: 'Motion Graphics', href: '/catalogo' },
   ],
-  empresa: [
+  plataforma: [
     { label: 'Portfólio', href: '/portfolio' },
-    { label: 'Sobre', href: '/sobre' },
+    { label: 'Sobre Nós', href: '/sobre' },
     { label: 'Como Funciona', href: '/#como-funciona' },
     { label: 'Depoimentos', href: '/#depoimentos' },
   ],
-  suporte: [
+  recursos: [
     { label: 'Minha Conta', href: '/minha-conta' },
-    { label: 'Pedidos', href: '/minha-conta' },
-    { label: 'Chat de Suporte', href: '/minha-conta' },
-    { label: 'FAQ', href: '/#faq' },
+    { label: 'Central de Ajuda', href: '/#faq' },
+    { label: 'Comunidade Discord', href: 'https://discord.gg/Wg8f3e28yv', external: true },
+    { label: 'Trabalhe Conosco', href: '/contato' },
   ],
 };
 
-const DiscordIcon = (props: any) => (
-  <svg viewBox="0 0 24 24" fill="currentColor" {...props}>
-    <path d="M20.317 4.37a19.791 19.791 0 0 0-4.885-1.515.074.074 0 0 0-.079.037c-.21.375-.444.864-.608 1.25a18.27 18.27 0 0 0-5.487 0 11.747 11.747 0 0 0-.617-1.25.077.077 0 0 0-.079-.037A19.736 19.736 0 0 0 3.677 4.37a.07.07 0 0 0-.032.027C.533 9.046-.32 13.58.099 18.057a.082.082 0 0 0 .031.057 19.9 19.9 0 0 0 5.993 3.03.078.078 0 0 0 .084-.028 14.09 14.09 0 0 0 1.226-1.994.076.076 0 0 0-.041-.106 13.107 13.107 0 0 1-1.872-.892.077.077 0 0 1-.008-.128 10.2 10.2 0 0 0 .372-.292.074.074 0 0 1 .077-.01c3.928 1.793 8.18 1.793 12.062 0a.074.074 0 0 1 .078.01c.12.098.246.198.373.292a.077.077 0 0 1-.006.127 12.299 12.299 0 0 1-1.873.892.077.077 0 0 0-.041.107c.36.698.772 1.362 1.225 1.993a.076.076 0 0 0 .084.028 19.839 19.839 0 0 0 6.002-3.03.077.077 0 0 0 .032-.054c.5-5.177-.838-9.674-3.549-13.66a.061.061 0 0 0-.031-.03zM8.02 15.33c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.956-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.956 2.419-2.157 2.419zm7.975 0c-1.183 0-2.157-1.085-2.157-2.419 0-1.333.955-2.419 2.157-2.419 1.21 0 2.176 1.096 2.157 2.42 0 1.333-.946 2.419-2.157 2.419z"/>
-  </svg>
-);
-
 const SOCIALS = [
-  { icon: Camera, href: 'https://instagram.com', label: 'Instagram' },
-  { icon: Video, href: 'https://youtube.com', label: 'YouTube' },
-  { icon: DiscordIcon, href: 'https://discord.gg/Wg8f3e28yv', label: 'Discord' },
+  { icon: Camera, href: 'https://instagram.com/pdledits', label: 'Instagram' },
+  { icon: Video, href: 'https://youtube.com/@pdledits', label: 'YouTube' },
+  { icon: MessageSquare, href: 'https://discord.gg/Wg8f3e28yv', label: 'Discord' },
 ];
 
 export function Footer() {
   return (
-    <footer className="relative mt-20 border-t border-white/5 bg-transparent overflow-hidden" role="contentinfo">
-      {/* Background Grid Sutil - similar ao da imagem */}
-      <div className="absolute inset-0 -z-10 opacity-[0.03]" style={{ backgroundImage: 'radial-gradient(circle at 2px 2px, rgba(255,255,255,0.15) 1px, transparent 0)', backgroundSize: '40px 40px' }} />
+    <footer className="relative mt-32 border-t border-white/5 bg-transparent overflow-hidden" role="contentinfo">
+      {/* Background Decor */}
+      <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-px bg-gradient-to-r from-transparent via-violet-500/50 to-transparent" />
+      <div className="absolute top-0 left-1/4 w-96 h-96 bg-violet-600/5 blur-[120px] rounded-full -z-10" />
 
+      {/* Seção CTA Pré-Footer */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 pt-20 pb-16">
+        <div className="glass-strong border border-white/10 rounded-[2.5rem] p-8 md:p-12 flex flex-col md:flex-row items-center justify-between gap-8 relative overflow-hidden group">
+          <div className="absolute top-0 right-0 p-12 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
+            <Zap className="w-40 h-40 text-white" />
+          </div>
+          
+          <div className="relative z-10 max-w-xl text-center md:text-left">
+            <h2 className="text-3xl md:text-4xl font-black text-white mb-4 leading-tight">
+              Pronto para elevar o nível do seu <span className="text-gradient">conteúdo?</span>
+            </h2>
+            <p className="text-zinc-400 text-lg">
+              Junte-se a centenas de criadores que já transformaram seus vídeos com a PDL Edits.
+            </p>
+          </div>
 
-      {/* Links grid */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16 border-t border-white/5">
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-12">
-          {/* Marca e Descrição */}
-          <div className="lg:col-span-2">
-            <Link href="/" className="inline-block mb-6 group">
+          <div className="relative z-10 flex flex-col sm:flex-row gap-4">
+            <Link href="/catalogo">
+              <Button size="lg" className="w-full sm:w-auto px-8" rightIcon={<ArrowRight className="w-5 h-5" />}>
+                Ver Serviços
+              </Button>
+            </Link>
+            <Link href="/auth/register">
+              <Button variant="secondary" size="lg" className="w-full sm:w-auto px-8">
+                Criar Conta
+              </Button>
+            </Link>
+          </div>
+        </div>
+      </div>
+
+      {/* Main Footer Content */}
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 py-16">
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-12 lg:gap-8">
+          
+          {/* Brand & Socials */}
+          <div className="lg:col-span-4 space-y-8">
+            <Link href="/" className="inline-block group">
               <img 
                 src="/logo.png" 
                 alt="PDL Edits Logo" 
                 className="h-10 w-auto transition-transform group-hover:scale-105"
               />
             </Link>
-            <p className="text-zinc-500 text-sm leading-relaxed max-w-sm">
-              Edição profissional de vídeo e foto com entrega rápida, qualidade premium e comunicação direta com o editor.
+            <p className="text-zinc-400 text-sm leading-relaxed max-w-xs">
+              Sua parceira premium em edição de vídeo e foto. Transformamos ideias brutas em experiências visuais memoráveis com entrega rápida e qualidade de elite.
             </p>
-
-            {/* Contato Rápido */}
-            <div className="mt-8 space-y-3">
-              <a href="mailto:contato@pdledits.com" className="flex items-center gap-3 text-sm text-zinc-500 hover:text-violet-400 transition-colors">
-                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">
-                  <Mail className="w-4 h-4" />
-                </div>
-                contato@pdledits.com
-              </a>
-              <div className="flex items-center gap-3 text-sm text-zinc-500">
-                <div className="w-8 h-8 rounded-full bg-white/5 flex items-center justify-center">
-                  <MapPin className="w-4 h-4" />
-                </div>
-                Brasil
-              </div>
+            
+            <div className="flex items-center gap-3">
+              {SOCIALS.map((social) => {
+                const Icon = social.icon;
+                return (
+                  <a 
+                    key={social.label} 
+                    href={social.href} 
+                    target="_blank" 
+                    rel="noopener noreferrer"
+                    className="w-10 h-10 rounded-xl bg-white/5 flex items-center justify-center text-zinc-400 hover:text-white hover:bg-violet-500/20 transition-all border border-white/5"
+                    aria-label={social.label}
+                  >
+                    <Icon className="w-5 h-5" />
+                  </a>
+                );
+              })}
             </div>
-
           </div>
 
-          {/* Colunas de Links */}
-          {Object.entries(FOOTER_LINKS).map(([key, links]) => (
-            <div key={key}>
-              <h3 className="text-xs font-black text-white uppercase tracking-[0.2em] mb-6">
-                {key === 'servicos' ? 'Serviços' : key === 'empresa' ? 'Empresa' : 'Suporte'}
-              </h3>
-              <ul className="space-y-3" role="list">
-                {links.map((link) => (
-                  <li key={link.label}>
-                    <Link
-                      href={link.href}
-                      className="text-sm text-zinc-500 hover:text-violet-400 transition-colors inline-block"
-                    >
-                      {link.label}
-                    </Link>
-                  </li>
-                ))}
-              </ul>
-            </div>
-          ))}
-        </div>
-      </div>
+          {/* Links Sections */}
+          <div className="lg:col-span-5 grid grid-cols-2 sm:grid-cols-3 gap-8">
+            {Object.entries(FOOTER_LINKS).map(([key, links]) => (
+              <div key={key}>
+                <h3 className="text-sm font-bold text-white mb-6 capitalize tracking-wide">
+                  {key}
+                </h3>
+                <ul className="space-y-4">
+                  {links.map((link) => (
+                    <li key={link.label}>
+                      <Link
+                        href={link.href}
+                        target={link.external ? "_blank" : undefined}
+                        className="text-sm text-zinc-500 hover:text-violet-400 transition-colors"
+                      >
+                        {link.label}
+                      </Link>
+                    </li>
+                  ))}
+                </ul>
+              </div>
+            ))}
+          </div>
 
-      {/* Brand & Quote Section - Estilo similar à imagem */}
-      <div className="border-t border-white/5 py-16 text-center">
-        <div className="max-w-4xl mx-auto px-4">
-          <h2 className="text-2xl font-black text-white tracking-[0.3em] mb-4 uppercase">
-            PDL EDITS
-          </h2>
-          <p className="text-zinc-500 text-sm italic font-medium">
-            "A paciência e o esforço nos levam a lugares que nunca imaginamos chegar."
-          </p>
+          {/* Newsletter / Contact */}
+          <div className="lg:col-span-3 space-y-6">
+            <h3 className="text-sm font-bold text-white tracking-wide">Fique por dentro</h3>
+            <p className="text-xs text-zinc-500 leading-relaxed">
+              Receba novidades, dicas de edição e ofertas exclusivas direto no seu e-mail.
+            </p>
+            <form className="relative group" onSubmit={(e) => e.preventDefault()}>
+              <input 
+                type="email" 
+                placeholder="Seu melhor e-mail"
+                className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 pr-12 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-violet-500/50 transition-all group-hover:border-white/20"
+              />
+              <button 
+                type="submit"
+                className="absolute right-2 top-2 w-8 h-8 rounded-xl bg-violet-500 flex items-center justify-center text-white hover:scale-105 active:scale-95 transition-all shadow-lg shadow-violet-500/20"
+              >
+                <Send className="w-4 h-4" />
+              </button>
+            </form>
+            
+            <div className="pt-4 space-y-3">
+              <a href="mailto:contato@pdledits.com" className="flex items-center gap-3 text-xs text-zinc-500 hover:text-white transition-colors">
+                <Mail className="w-4 h-4 text-violet-400" />
+                contato@pdledits.com
+              </a>
+              <div className="flex items-center gap-3 text-xs text-zinc-500">
+                <MapPin className="w-4 h-4 text-violet-400" />
+                São Paulo, Brasil
+              </div>
+            </div>
+          </div>
+
         </div>
       </div>
 
       {/* Bottom Bar */}
-      <div className="bg-white/[0.02] border-t border-white/5 py-8">
+      <div className="border-t border-white/5 py-8">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 flex flex-col md:flex-row items-center justify-between gap-6">
-          <p className="text-[10px] uppercase font-black tracking-widest text-zinc-600">
-            © {new Date().getFullYear()} PDL Edits. Todos os direitos reservados.
-          </p>
+          <div className="flex items-center gap-4">
+            <p className="text-[10px] text-zinc-600 font-medium tracking-wider">
+              © {new Date().getFullYear()} PDL EDITS. TODOS OS DIREITOS RESERVADOS.
+            </p>
+          </div>
+          
           <div className="flex items-center gap-8">
-            <Link href="/privacidade" className="text-[10px] uppercase font-black tracking-widest text-zinc-600 hover:text-violet-400 transition-colors">
-              Privacidade
-            </Link>
-            <Link href="/termos" className="text-[10px] uppercase font-black tracking-widest text-zinc-600 hover:text-violet-400 transition-colors">
-              Termos
-            </Link>
-            <Link href="/contato" className="text-[10px] uppercase font-black tracking-widest text-zinc-600 hover:text-violet-400 transition-colors">
-              Contato
-            </Link>
+            {[
+              { label: 'Privacidade', href: '/privacidade' },
+              { label: 'Termos', href: '/termos' },
+              { label: 'Cookies', href: '/privacidade' },
+            ].map((link) => (
+              <Link 
+                key={link.label}
+                href={link.href} 
+                className="text-[10px] uppercase font-bold tracking-widest text-zinc-600 hover:text-violet-400 transition-colors"
+              >
+                {link.label}
+              </Link>
+            ))}
+          </div>
+
+          <div className="flex items-center gap-2 text-[10px] text-zinc-700 font-bold uppercase tracking-tighter">
+            <Shield className="w-3 h-3" />
+            Pagamentos Seguros
           </div>
         </div>
       </div>
