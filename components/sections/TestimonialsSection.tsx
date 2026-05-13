@@ -6,7 +6,7 @@ const TESTIMONIALS = [
     name: 'dannz elo job',
     time: '16h',
     likes: 26,
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=dannz',
+    avatar: '/images/feedbacks/user3.jpg',
     text: 'mano esse pack de edição salvou kkkkk, minhas edições ficaram muito mais bonitas',
   },
   {
@@ -14,7 +14,7 @@ const TESTIMONIALS = [
     name: 'Fxz',
     time: '13h',
     likes: 23,
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=fxz',
+    avatar: '/images/feedbacks/user2.jpg',
     text: 'muito bom o pack de edição, comecei a editar pra ganhar dinheiro e o pack me ajudou muito',
   },
   {
@@ -22,7 +22,7 @@ const TESTIMONIALS = [
     name: 'I N S A N O !',
     time: '3h',
     likes: 6,
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=insano',
+    avatar: '/images/feedbacks/user1.jpg',
     text: 'pack completo mano, ja tive retorno do investimento',
   },
   {
@@ -30,7 +30,7 @@ const TESTIMONIALS = [
     name: 'Lucky',
     time: '19h',
     likes: 37,
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=lucky',
+    avatar: '/images/feedbacks/user2.jpg',
     text: 'tem tudo e mais um pouco slk kkkk, comecei a editar e precisava de um pack de edição',
   },
   {
@@ -38,7 +38,7 @@ const TESTIMONIALS = [
     name: 'roma',
     time: '2d',
     likes: 42,
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=roma',
+    avatar: '/images/feedbacks/user1.jpg',
     text: 'melhor investimento que fiz esse ano, o suporte é nota 10!',
   },
   {
@@ -46,7 +46,7 @@ const TESTIMONIALS = [
     name: '9000',
     time: '5h',
     likes: 12,
-    avatar: 'https://api.dicebear.com/7.x/avataaars/svg?seed=9000',
+    avatar: '/images/feedbacks/user3.jpg',
     text: 'as transições desse pack são de outro mundo, vale cada centavo',
   },
 ];
