@@ -30,7 +30,7 @@ const TESTIMONIALS = [
     name: 'Lucky',
     time: '19h',
     likes: 37,
-    avatar: '/images/feedbacks/user2.jpg',
+    avatar: '/images/feedbacks/user4.png',
     text: 'tem tudo e mais um pouco slk kkkk, comecei a editar e precisava de um pack de edição',
   },
   {
@@ -38,7 +38,7 @@ const TESTIMONIALS = [
     name: 'roma',
     time: '2d',
     likes: 42,
-    avatar: '/images/feedbacks/user1.jpg',
+    avatar: '/images/feedbacks/user5.png',
     text: 'melhor investimento que fiz esse ano, o suporte é nota 10!',
   },
   {
@@ -46,7 +46,7 @@ const TESTIMONIALS = [
     name: '9000',
     time: '5h',
     likes: 12,
-    avatar: '/images/feedbacks/user3.jpg',
+    avatar: '/images/feedbacks/user6.png',
     text: 'as transições desse pack são de outro mundo, vale cada centavo',
   },
 ];
