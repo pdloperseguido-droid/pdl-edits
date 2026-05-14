@@ -1,3 +1,4 @@
+'use client';
 import Link from 'next/link';
 import { Mail, MapPin, ArrowRight, Camera, Video, Send, Shield, Zap, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
