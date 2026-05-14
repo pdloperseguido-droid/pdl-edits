@@ -1,8 +1,14 @@
 import Link from 'next/link';
 import { Mail, MapPin, ArrowRight, Camera, Video, Send, Shield, Zap, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+ 
+interface FooterLink {
+  label: string;
+  href: string;
+  external?: boolean;
+}
 
-const FOOTER_LINKS = {
+const FOOTER_LINKS: Record<string, FooterLink[]> = {
   servicos: [
     { label: 'Edição de Vídeo', href: '/catalogo' },
     { label: 'Thumbnails', href: '/catalogo' },
@@ -115,7 +121,7 @@ export function Footer() {
                     <li key={link.label}>
                       <Link
                         href={link.href}
-                        target={link.external ? "_blank" : undefined}
+                        target={(link as FooterLink).external ? "_blank" : undefined}
                         className="text-sm text-zinc-500 hover:text-violet-400 transition-colors"
                       >
                         {link.label}
