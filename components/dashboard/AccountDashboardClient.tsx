@@ -60,58 +60,70 @@ export function AccountDashboardClient({ initialOrders, user }: AccountDashboard
   return (
     <div className="space-y-10 pb-20">
       {/* Welcome Section */}
-      <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-        <div>
-          <h1 className="text-4xl lg:text-5xl font-black text-white leading-tight">
-            Olá, <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400">{user.name.split(' ')[0]}</span>
-          </h1>
-          <p className="text-zinc-500 mt-2 text-lg max-w-xl">
-            Acompanhe seus pedidos, envie materiais e converse com seu editor em um só lugar.
-          </p>
+      <div className="relative overflow-hidden glass-strong border border-white/10 rounded-[3rem] p-8 md:p-12">
+        <div className="absolute top-0 right-0 p-12 opacity-[0.03] pointer-events-none">
+          <Package className="w-48 h-48 text-white" />
         </div>
         
-        <div className="flex items-center gap-4">
-           <div className="bg-white/5 border border-white/5 rounded-2xl p-4 flex items-center gap-4 backdrop-blur-xl">
-              <div className="w-10 h-10 rounded-full bg-violet-500/20 flex items-center justify-center">
-                <Clock className="w-5 h-5 text-violet-400" />
+        <div className="relative z-10 flex flex-col lg:flex-row lg:items-center justify-between gap-8">
+          <div className="space-y-4">
+            <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-[10px] font-black uppercase tracking-widest">
+              Área do Cliente
+            </div>
+            <h1 className="text-4xl md:text-5xl lg:text-6xl font-black text-white leading-tight tracking-tighter">
+              Fala, <span className="text-gradient">{user.name.split(' ')[0]}</span>! 👋
+            </h1>
+            <p className="text-zinc-400 text-lg max-w-xl leading-relaxed">
+              Sua central de controle para produções de elite. Gerencie seus pedidos, envie arquivos e acompanhe cada etapa em tempo real.
+            </p>
+          </div>
+          
+          <div className="flex flex-wrap gap-4">
+            {[
+              { label: 'Pedidos Ativos', value: stats.inProgress, icon: Clock, color: 'text-amber-400' },
+              { label: 'Concluídos', value: stats.delivered, icon: CheckCircle2, color: 'text-emerald-400' },
+            ].map((item, i) => (
+              <div key={i} className="glass border border-white/5 rounded-2xl p-4 min-w-[140px]">
+                <div className="flex items-center justify-between mb-2">
+                  <item.icon className={cn("w-5 h-5", item.color)} />
+                  <span className="text-2xl font-black text-white">{item.value}</span>
+                </div>
+                <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">{item.label}</p>
               </div>
-              <div>
-                <p className="text-[10px] text-zinc-500 uppercase font-black tracking-widest">Última Atualização</p>
-                <p className="text-xs font-bold text-white">Hoje, às 14:30</p>
-              </div>
-           </div>
+            ))}
+          </div>
         </div>
       </div>
 
-      {/* Stats Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
-        <StatsCard 
-          label="Total de Pedidos" 
-          value={stats.total} 
-          icon={Package} 
-          description="Volume total de projetos"
-        />
-        <StatsCard 
-          label="Em Andamento" 
-          value={stats.inProgress} 
-          icon={Clock} 
-          iconColor="text-amber-400"
-          description="Edições sendo processadas"
-        />
-        <StatsCard 
-          label="Entregues" 
-          value={stats.delivered} 
-          icon={CheckCircle2} 
-          iconColor="text-emerald-400"
-          description="Finalizados e aprovados"
-        />
-        <StatsCard 
-          label="Pendentes" 
-          value={stats.pending} 
-          icon={MessageSquare} 
-          iconColor="text-fuchsia-400"
-          description="Aguardando materiais"
-        />
+      {/* Quick Actions / Filters */}
+      <div className="flex flex-col md:flex-row md:items-center justify-between gap-6 pt-4">
+        <div className="flex items-center gap-2 p-1.5 bg-white/5 border border-white/5 rounded-2xl overflow-x-auto no-scrollbar scroll-smooth">
+          {filterTabs.map(tab => (
+            <button
+              key={tab.id}
+              onClick={() => setFilter(tab.id as any)}
+              className={cn(
+                "px-6 py-2.5 rounded-xl text-[10px] font-black uppercase tracking-widest transition-all whitespace-nowrap",
+                filter === tab.id 
+                  ? "bg-violet-500 text-white shadow-lg shadow-violet-500/30 scale-105" 
+                  : "text-zinc-500 hover:text-zinc-300 hover:bg-white/5"
+              )}
+            >
+              {tab.label}
+            </button>
+          ))}
+        </div>
+
+        <div className="relative group min-w-[300px]">
+          <Search className="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-zinc-500 group-focus-within:text-violet-400 transition-colors" />
+          <input 
+            type="text"
+            placeholder="Buscar por ID ou serviço..."
+            value={searchTerm}
+            onChange={(e) => setSearchTerm(e.target.value)}
+            className="w-full bg-white/5 border border-white/5 rounded-2xl py-3 pl-12 pr-4 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-violet-500/40 transition-all"
+          />
+        </div>
       </div>
 
       {/* Main Content Grid */}

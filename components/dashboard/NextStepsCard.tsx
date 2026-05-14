@@ -52,23 +52,25 @@ export function NextStepsCard({ orders }: NextStepsCardProps) {
   const Icon = content.icon;
 
   return (
-    <div className="relative group overflow-hidden bg-white/[0.03] border border-white/5 rounded-2xl p-6 transition-all duration-300 hover:border-white/10">
-      {/* Background Pattern */}
-      <div className="absolute top-0 right-0 p-4 opacity-[0.03] group-hover:opacity-[0.05] transition-opacity">
-        <Icon size={120} />
-      </div>
+    <div className="relative group overflow-hidden glass-strong border border-white/10 rounded-[2.5rem] p-8 transition-all duration-500 hover:border-violet-500/30">
+      {/* Background Decor */}
+      <div className={cn(
+        "absolute -top-12 -right-12 w-48 h-48 rounded-full blur-[80px] opacity-20 transition-all duration-700 group-hover:opacity-30",
+        content.color === 'from-amber-500 to-orange-500' ? 'bg-amber-500' : 
+        content.color === 'from-emerald-500 to-teal-500' ? 'bg-emerald-500' : 'bg-violet-600'
+      )} />
 
-      <div className="relative space-y-4">
+      <div className="relative space-y-6">
         <div className={cn(
-          "w-12 h-12 rounded-xl flex items-center justify-center bg-gradient-to-br shadow-lg",
+          "w-14 h-14 rounded-2xl flex items-center justify-center bg-gradient-to-br shadow-2xl",
           content.color
         )}>
-          <Icon className="w-6 h-6 text-white" />
+          <Icon className="w-7 h-7 text-white" />
         </div>
 
-        <div>
-          <h3 className="text-xl font-bold text-white mb-2">{content.title}</h3>
-          <p className="text-sm text-zinc-400 leading-relaxed">
+        <div className="space-y-3">
+          <h3 className="text-2xl font-black text-white leading-tight tracking-tight">{content.title}</h3>
+          <p className="text-sm text-zinc-500 leading-relaxed font-medium">
             {content.description}
           </p>
         </div>
@@ -76,8 +78,8 @@ export function NextStepsCard({ orders }: NextStepsCardProps) {
         <Link 
           href={content.buttonHref}
           className={cn(
-            "inline-flex items-center gap-2 w-full justify-center py-3 px-4 rounded-xl text-sm font-bold text-white transition-all shadow-lg shadow-black/20",
-            "bg-gradient-to-r hover:opacity-90 active:scale-[0.98]",
+            "inline-flex items-center gap-2 w-full justify-center py-4 px-6 rounded-2xl text-[10px] font-black uppercase tracking-[0.2em] text-white transition-all shadow-2xl",
+            "bg-gradient-to-r hover:scale-[1.02] active:scale-[0.98]",
             content.color
           )}
         >
@@ -85,9 +87,6 @@ export function NextStepsCard({ orders }: NextStepsCardProps) {
           <ArrowRight className="w-4 h-4" />
         </Link>
       </div>
-
-      {/* Glossy overlay */}
-      <div className="absolute inset-0 bg-gradient-to-tr from-white/5 to-transparent pointer-events-none" />
     </div>
   );
 }
