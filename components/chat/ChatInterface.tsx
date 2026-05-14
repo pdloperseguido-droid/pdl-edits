@@ -66,19 +66,47 @@ export function ChatInterface({
   const inputRef = useRef<HTMLTextAreaElement>(null);
   const fileInputRef = useRef<HTMLInputElement>(null);
   
+  const messagesContainerRef = useRef<HTMLDivElement>(null);
   const isAdmin = currentUserRole === 'ADMIN';
 
-  const scrollToBottom = useCallback(() => {
-    messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' });
+  const scrollToBottom = useCallback((behavior: ScrollBehavior = 'smooth') => {
+    messagesEndRef.current?.scrollIntoView({ behavior });
   }, []);
 
-  useEffect(() => { scrollToBottom(); }, [messages, scrollToBottom]);
+  // Scroll inicial e quando novas mensagens chegam (se estiver no fundo)
+  useEffect(() => {
+    if (messages.length > 0) {
+      const container = messagesContainerRef.current;
+      if (container) {
+        const isAtBottom = container.scrollHeight - container.scrollTop <= container.clientHeight + 100;
+        const lastMessageIsOwn = messages[messages.length - 1]?.senderId === currentUserId;
+        
+        if (isAtBottom || lastMessageIsOwn) {
+          scrollToBottom();
+        }
+      }
+    }
+  }, [messages, currentUserId, scrollToBottom]);
+
+  // Scroll imediato no primeiro carregamento
+  useEffect(() => {
+    scrollToBottom('auto');
+  }, [scrollToBottom]);
 
   useEffect(() => {
     const poll = async () => {
       try {
         const newMessages = await getMessages(orderId);
-        setMessages(newMessages as Message[]);
+        
+        // Só atualiza o estado se houver mudança real no conteúdo ou quantidade
+        setMessages(prev => {
+          if (newMessages.length !== prev.length || 
+              (newMessages.length > 0 && newMessages[newMessages.length - 1].id !== prev[prev.length - 1]?.id)) {
+            return newMessages as Message[];
+          }
+          return prev;
+        });
+
         setConnectionStatus('connected');
         setRetryCount(0);
       } catch (err) {
@@ -227,7 +255,10 @@ export function ChatInterface({
       </div>
 
       {/* Mensagens */}
-      <div className="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar">
+      <div 
+        ref={messagesContainerRef}
+        className="flex-1 overflow-y-auto p-6 space-y-4 custom-scrollbar"
+      >
         {messages.length === 0 && (
           <div className="flex flex-col items-center justify-center h-full text-center py-12 opacity-40">
              <div className="w-20 h-20 rounded-3xl bg-zinc-900 border border-white/5 flex items-center justify-center mb-6">
