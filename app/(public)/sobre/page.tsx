@@ -8,21 +8,22 @@ export const metadata: Metadata = {
 
 export default function SobrePage() {
   return (
-    <div className="max-w-5xl mx-auto space-y-16 pt-32 pb-20">
+    <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 space-y-16 pt-36 sm:pt-44 pb-24">
       {/* Hero Section */}
-      <div className="relative overflow-hidden rounded-[3rem] bg-white/[0.02] border border-white/5 p-10 lg:p-20 text-center">
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-full h-full bg-gradient-to-b from-violet-600/10 to-transparent pointer-events-none" />
+      <div className="relative overflow-hidden rounded-[2.5rem] md:rounded-[3.5rem] bg-white/[0.02] border border-white/5 p-8 md:p-16 lg:p-24 text-center group">
+        <div className="absolute inset-0 bg-gradient-to-br from-violet-600/10 via-transparent to-fuchsia-600/5 pointer-events-none group-hover:opacity-100 transition-opacity duration-700" />
+        <div className="absolute -top-24 -left-24 w-64 h-64 bg-violet-500/10 rounded-full blur-3xl animate-pulse" />
         
-        <div className="relative z-10 space-y-6">
-          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-xs font-bold uppercase tracking-widest">
+        <div className="relative z-10 space-y-8 animate-fade-in">
+          <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-violet-500/10 border border-violet-500/20 text-violet-400 text-[10px] font-black uppercase tracking-[0.2em] animate-float">
             <Sparkles className="w-3 h-3" />
             Nossa Essência
           </div>
-          <h1 className="text-4xl lg:text-6xl font-black text-white leading-tight">
+          <h1 className="text-4xl md:text-6xl lg:text-7xl font-black text-white leading-[1.1] tracking-tighter">
             Elevando o Padrão do <br />
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-violet-400 to-fuchsia-400">Conteúdo Digital</span>
+            <span className="text-gradient">Conteúdo Digital</span>
           </h1>
-          <p className="text-lg text-zinc-400 max-w-2xl mx-auto leading-relaxed">
+          <p className="text-base md:text-xl text-zinc-400 max-w-2xl mx-auto leading-relaxed font-medium">
             A PDL Edits nasceu da paixão por transformar ideias brutas em experiências visuais memoráveis. 
             Não somos apenas editores; somos seus parceiros criativos na jornada para o topo.
           </p>
