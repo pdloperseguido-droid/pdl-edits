@@ -2,6 +2,8 @@
 import Link from 'next/link';
 import { Mail, MapPin, ArrowRight, Camera, Video, Send, Shield, Zap, MessageSquare } from 'lucide-react';
 import { Button } from '@/components/ui/Button';
+import { toast } from 'sonner';
+import { useState } from 'react';
  
 interface FooterLink {
   label: string;
@@ -37,6 +39,25 @@ const SOCIALS = [
 ];
 
 export function Footer() {
+  const [isSubmitting, setIsSubmitting] = useState(false);
+  const [email, setEmail] = useState('');
+
+  const handleNewsletter = async (e: React.FormEvent) => {
+    e.preventDefault();
+    if (!email) return;
+
+    setIsSubmitting(true);
+    // Simula uma integração real (poderia ser uma Server Action ou API)
+    await new Promise(resolve => setTimeout(resolve, 1000));
+    
+    toast.success('Inscrito com sucesso!', {
+      description: 'Você receberá nossas novidades em breve.',
+    });
+    
+    setEmail('');
+    setIsSubmitting(false);
+  };
+
   return (
     <footer className="relative mt-32 border-t border-white/5 bg-transparent overflow-hidden" role="contentinfo">
       {/* Background Decor */}
@@ -140,17 +161,21 @@ export function Footer() {
             <p className="text-xs text-zinc-500 leading-relaxed">
               Receba novidades, dicas de edição e ofertas exclusivas direto no seu e-mail.
             </p>
-            <form className="relative group" onSubmit={(e) => e.preventDefault()}>
+            <form className="relative group" onSubmit={handleNewsletter}>
               <input 
                 type="email" 
                 placeholder="Seu melhor e-mail"
+                required
+                value={email}
+                onChange={(e) => setEmail(e.target.value)}
                 className="w-full bg-white/5 border border-white/10 rounded-2xl py-3 px-4 pr-12 text-sm text-white placeholder:text-zinc-600 focus:outline-none focus:border-violet-500/50 transition-all group-hover:border-white/20"
               />
               <button 
                 type="submit"
-                className="absolute right-2 top-2 w-8 h-8 rounded-xl bg-violet-500 flex items-center justify-center text-white hover:scale-105 active:scale-95 transition-all shadow-lg shadow-violet-500/20"
+                disabled={isSubmitting}
+                className="absolute right-2 top-2 w-8 h-8 rounded-xl bg-violet-500 flex items-center justify-center text-white hover:scale-105 active:scale-95 transition-all shadow-lg shadow-violet-500/20 disabled:opacity-50 disabled:scale-100"
               >
-                <Send className="w-4 h-4" />
+                {isSubmitting ? <Zap className="w-3 h-3 animate-pulse" /> : <Send className="w-4 h-4" />}
               </button>
             </form>
             
