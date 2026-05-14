@@ -59,6 +59,8 @@ export function ChatInterface({
   // File upload state
   const [attachedFile, setAttachedFile] = useState<AttachedFile | null>(null);
   const [isUploading, setIsUploading] = useState(false);
+  const [connectionStatus, setConnectionStatus] = useState<'connected' | 'reconnecting' | 'error'>('connected');
+  const [retryCount, setRetryCount] = useState(0);
   
   const messagesEndRef = useRef<HTMLDivElement>(null);
   const inputRef = useRef<HTMLTextAreaElement>(null);
@@ -74,20 +76,21 @@ export function ChatInterface({
 
   useEffect(() => {
     const poll = async () => {
-      setIsPolling(true);
       try {
         const newMessages = await getMessages(orderId);
         setMessages(newMessages as Message[]);
-      } catch {
-        // silencia erros
-      } finally {
-        setIsPolling(false);
+        setConnectionStatus('connected');
+        setRetryCount(0);
+      } catch (err) {
+        setConnectionStatus('reconnecting');
+        setRetryCount(prev => prev + 1);
+        if (retryCount > 5) setConnectionStatus('error');
       }
     };
 
     const interval = setInterval(poll, 3000);
     return () => clearInterval(interval);
-  }, [orderId]);
+  }, [orderId, retryCount]);
 
   const handleSend = async () => {
     const trimmed = content.trim();
@@ -182,11 +185,33 @@ export function ChatInterface({
       {/* Header */}
       <div className="flex items-center justify-between px-6 py-4 border-b border-white/5 bg-[#0D0D0D]/80 backdrop-blur-xl">
         <div className="flex items-center gap-3">
-          <div className="w-2.5 h-2.5 rounded-full bg-emerald-500 shadow-[0_0_10px_rgba(16,185,129,0.5)] animate-pulse" />
+          <div className="w-2.5 h-2.5 rounded-full relative">
+            <div className={cn(
+              "absolute inset-0 rounded-full animate-ping opacity-75",
+              connectionStatus === 'connected' ? "bg-emerald-500" : 
+              connectionStatus === 'reconnecting' ? "bg-amber-500" : "bg-rose-500"
+            )} />
+            <div className={cn(
+              "relative w-full h-full rounded-full shadow-lg",
+              connectionStatus === 'connected' ? "bg-emerald-500 shadow-emerald-500/20" : 
+              connectionStatus === 'reconnecting' ? "bg-amber-500 shadow-amber-500/20" : "bg-rose-500 shadow-rose-500/20"
+            )} />
+          </div>
           <div>
-            <p className="text-sm font-bold text-white font-display tracking-tight">Chat de Atendimento</p>
-            <p className="text-[10px] text-zinc-500 uppercase tracking-widest font-medium">
-              {isPolling ? 'Sincronizando...' : 'Conexão segura · SSL'}
+            <p className="text-sm font-black text-white font-display tracking-tight flex items-center gap-2">
+              Chat de Atendimento
+              {isAdmin && <span className="text-[9px] px-1.5 py-0.5 bg-violet-500/20 text-violet-400 rounded-md border border-violet-500/20">ADMIN VIEW</span>}
+            </p>
+            <p className="text-[9px] text-zinc-500 uppercase tracking-widest font-black flex items-center gap-1.5">
+              {connectionStatus === 'connected' ? (
+                <>
+                  <span className="text-emerald-500/70">●</span> Conexão Segura E2EE · SSL
+                </>
+              ) : connectionStatus === 'reconnecting' ? (
+                <span className="text-amber-500 animate-pulse italic">Tentando reconectar...</span>
+              ) : (
+                <span className="text-rose-500 font-bold italic">Offline · Verifique sua internet</span>
+              )}
             </p>
           </div>
         </div>

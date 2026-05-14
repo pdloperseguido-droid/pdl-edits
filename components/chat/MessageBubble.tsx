@@ -57,9 +57,21 @@ export function MessageBubble({
 
       {/* Conteúdo do balão */}
       <div className={cn('flex flex-col gap-1', isOwnMessage ? 'items-end' : 'items-start')}>
+        {/* Nome e Role (Apenas para mensagens recebidas) */}
+        {!isOwnMessage && (
+          <div className="flex items-center gap-2 mb-0.5 px-1">
+            <span className="text-[10px] font-black text-white/70 uppercase tracking-widest">{senderName}</span>
+            {isAdmin && (
+              <span className="text-[9px] px-1.5 py-0.5 bg-violet-500/10 text-violet-400 rounded-md border border-violet-500/20 font-black tracking-tighter">
+                EDITOR PDL
+              </span>
+            )}
+          </div>
+        )}
+        
         <div
           className={cn(
-            'relative overflow-hidden rounded-2xl p-1',
+            'relative overflow-hidden rounded-2xl transition-all duration-300',
             isOwnMessage 
               ? 'bg-violet-600 shadow-[0_4px_15px_rgba(124,58,237,0.3)]' 
               : 'bg-zinc-900 border border-white/5 shadow-xl'
