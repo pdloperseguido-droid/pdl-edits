@@ -86,7 +86,7 @@ export function AccountDashboardClient({ initialOrders, user }: AccountDashboard
               <div key={i} className="glass border border-white/5 rounded-2xl p-4 min-w-[140px]">
                 <div className="flex items-center justify-between mb-2">
                   <item.icon className={cn("w-5 h-5", item.color)} />
-                  <span className="text-2xl font-black text-white">{item.value}</span>
+                  <span className="text-2xl font-black text-white font-display">{item.value}</span>
                 </div>
                 <p className="text-[10px] font-bold text-zinc-500 uppercase tracking-widest">{item.label}</p>
               </div>

@@ -14,7 +14,7 @@ function StatBadge({ value, label }: { value: string; label: string }) {
         <Star className="w-4 h-4 text-violet-400 fill-violet-400" />
       </div>
       <div>
-        <p className="text-xl font-bold text-white">{value}</p>
+        <p className="text-xl font-bold text-white font-display">{value}</p>
         <p className="text-xs text-zinc-500">{label}</p>
       </div>
     </div>

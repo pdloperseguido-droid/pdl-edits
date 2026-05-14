@@ -95,7 +95,7 @@ export function TestimonialsSection() {
                 <div className="flex-grow min-w-0">
                   <div className="flex items-center justify-between gap-2 mb-1">
                     <div className="flex items-center gap-2 overflow-hidden">
-                      <span className="font-bold text-zinc-100 truncate hover:text-violet-400 transition-colors cursor-pointer font-display">
+                      <span className="font-bold text-zinc-100 truncate hover:text-violet-400 transition-colors cursor-pointer">
                         {comment.name}
                       </span>
                       <span className="text-xs text-zinc-500 whitespace-nowrap">{comment.time}</span>

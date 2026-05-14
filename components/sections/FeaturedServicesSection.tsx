@@ -73,7 +73,7 @@ export async function FeaturedServicesSection() {
                   </ul>
 
                   <div className="mt-auto pt-4 border-t border-white/5 flex items-center justify-between">
-                    <p className="text-sm text-zinc-500 font-medium">A partir de <span className="text-white font-bold">{Number(service.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span></p>
+                    <p className="text-sm text-zinc-500 font-medium">A partir de <span className="text-white font-bold font-display">{Number(service.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}</span></p>
                     <Link href={`/catalogo/${service.slug}`}>
                       <Button
                         variant={service.isFeatured ? 'primary' : 'secondary'}

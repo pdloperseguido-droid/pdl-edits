@@ -48,9 +48,25 @@
     font-family: var(--font-body);
   }
 
-  h1, h2, h3, h4, h5, h6, .font-display, .font-heading {
+  /* Títulos e Display - Space Grotesk */
+  h1, h2, h3, h4, 
+  .font-display, 
+  .font-heading,
+  .metric-value {
     font-family: var(--font-heading) !important;
-    letter-spacing: -0.02em;
+    letter-spacing: -0.03em;
+  }
+
+  h1 { @apply font-bold; }
+  h2 { @apply font-semibold; }
+  h3 { @apply font-semibold; }
+
+  /* Corpo de texto e UI - Inter */
+  body, p, span, button, input, label, textarea, select, 
+  .font-sans,
+  .ui-text {
+    font-family: var(--font-body);
+    letter-spacing: normal;
   }
 
   body {
@@ -58,7 +74,6 @@
     color: var(--text-primary);
     -webkit-font-smoothing: antialiased;
     -moz-osx-font-smoothing: grayscale;
-    font-family: var(--font-body);
   }
 }
 

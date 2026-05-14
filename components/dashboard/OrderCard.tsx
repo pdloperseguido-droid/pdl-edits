@@ -72,7 +72,7 @@ export function OrderCard({ order, onClick }: OrderCardProps) {
           <div className="lg:col-span-4 grid grid-cols-2 lg:grid-cols-1 gap-6">
             <div className="space-y-1">
               <p className="text-[10px] font-black text-zinc-600 uppercase tracking-widest">Valor do Projeto</p>
-              <p className="text-2xl font-black text-white">{formatPrice(Number(order.totalPrice))}</p>
+              <p className="text-2xl font-black text-white font-display">{formatPrice(Number(order.totalPrice))}</p>
             </div>
             
             <div className="space-y-2">
