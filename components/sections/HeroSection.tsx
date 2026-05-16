@@ -76,7 +76,7 @@ export function HeroSection() {
           )}
         >
           {[
-            { value: '500+' },
+            { value: '200+' },
             { value: '4.9★' },
             { value: '72h' },
             { value: '100%' },
