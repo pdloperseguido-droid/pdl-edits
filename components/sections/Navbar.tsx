@@ -25,7 +25,7 @@ export function Navbar() {
   const { data: session } = useSession();
 
   useEffect(() => {
-    const onScroll = () => setIsScrolled(window.scrollY > 20);
+    const onScroll = () => setIsScrolled(window.scrollY > 30);
     window.addEventListener('scroll', onScroll, { passive: true });
     return () => window.removeEventListener('scroll', onScroll);
   }, []);
@@ -51,44 +51,38 @@ export function Navbar() {
     <>
       <header
         className={cn(
-          'fixed top-4 inset-x-0 z-50 transition-all duration-500 mx-auto px-4 sm:px-6 max-w-7xl'
+          'fixed top-0 inset-x-0 z-50 transition-all duration-300',
+          isScrolled
+            ? 'bg-[#080808]/80 backdrop-blur-xl border-b border-white/[0.06] shadow-xl shadow-black/30'
+            : 'bg-transparent'
         )}
       >
-        <nav 
-          className={cn(
-            'flex items-center justify-between transition-all duration-500',
-            isScrolled 
-              ? 'bg-white/5 backdrop-blur-3xl py-2 px-6 rounded-2xl shadow-2xl shadow-black/50' 
-              : 'bg-transparent py-4 px-0'
-          )} 
+        <nav
+          className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between"
           aria-label="Navegação principal"
         >
           {/* Logo */}
-          <Link href="/" className="flex items-center gap-2 group" aria-label="PDL Edits - Página inicial">
-            <img 
-              src="/logo.png" 
-              alt="PDL Edits Logo" 
-              className={cn(
-                "w-auto transition-all duration-500 group-hover:scale-105",
-                isScrolled ? "h-8" : "h-10"
-              )}
+          <Link href="/" className="flex-shrink-0" aria-label="PDL Edits - Página inicial">
+            <img
+              src="/logo.png"
+              alt="PDL Edits Logo"
+              className="h-8 w-auto"
             />
           </Link>
 
           {/* Links desktop */}
-          <ul className="hidden md:flex items-center gap-1" role="list">
+          <ul className="hidden md:flex items-center gap-0.5" role="list">
             {NAV_LINKS.map((link) => (
               <li key={link.href}>
                 <Link
                   href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  rel={link.external ? "noopener noreferrer" : undefined}
+                  target={link.external ? '_blank' : undefined}
+                  rel={link.external ? 'noopener noreferrer' : undefined}
                   className={cn(
-                    'px-4 py-2 rounded-lg text-sm font-medium transition-all duration-200',
-                    'focus-ring',
+                    'px-4 py-2 rounded-lg text-sm transition-all duration-150 focus-ring',
                     pathname === link.href
-                      ? 'text-violet-400 bg-violet-500/10'
-                      : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                      ? 'text-white font-medium'
+                      : 'text-zinc-500 hover:text-zinc-200 font-normal'
                   )}
                 >
                   {link.label}
@@ -98,49 +92,49 @@ export function Navbar() {
           </ul>
 
           {/* Área direita */}
-          <div className="hidden md:flex items-center gap-3">
+          <div className="hidden md:flex items-center gap-2">
             {session ? (
               <>
                 <Link
                   href={isAdmin ? '/dashboard' : '/minha-conta'}
-                  className="relative p-2 rounded-lg hover:bg-white/5 text-zinc-400 hover:text-white transition-colors focus-ring"
+                  className="relative p-2 rounded-lg text-zinc-500 hover:text-white hover:bg-white/5 transition-colors focus-ring"
                 >
-                  <MessageSquare className="w-5 h-5" />
+                  <MessageSquare className="w-4.5 h-4.5" />
                   <NotificationBadge count={unreadCount} />
                 </Link>
 
                 {isAdmin && (
                   <Link
                     href="/dashboard"
-                    className="p-2 rounded-lg hover:bg-white/5 text-zinc-400 hover:text-white transition-colors focus-ring"
+                    className="p-2 rounded-lg text-zinc-500 hover:text-white hover:bg-white/5 transition-colors focus-ring"
                   >
-                    <LayoutDashboard className="w-5 h-5" />
+                    <LayoutDashboard className="w-4.5 h-4.5" />
                   </Link>
                 )}
 
                 <Link
                   href="/minha-conta"
-                  className="flex items-center gap-2 px-3 py-2 rounded-xl hover:bg-white/5 transition-colors"
+                  className="flex items-center gap-2 px-3 py-1.5 rounded-lg hover:bg-white/5 transition-colors"
                 >
                   {session.user.image ? (
                     <img
                       src={session.user.image}
                       alt={session.user.name}
-                      className="w-7 h-7 rounded-full object-cover ring-1 ring-violet-500/50"
+                      className="w-6 h-6 rounded-full object-cover ring-1 ring-violet-500/40"
                     />
                   ) : (
-                    <div className="w-7 h-7 rounded-full btn-gradient flex items-center justify-center">
-                      <User className="w-4 h-4 text-white" />
+                    <div className="w-6 h-6 rounded-full btn-gradient flex items-center justify-center">
+                      <User className="w-3 h-3 text-white" />
                     </div>
                   )}
-                  <span className="text-sm text-zinc-300 max-w-[120px] truncate">
+                  <span className="text-sm text-zinc-400 max-w-[100px] truncate">
                     {session.user.name.split(' ')[0]}
                   </span>
                 </Link>
 
                 <button
                   onClick={() => signOut({ callbackUrl: '/' })}
-                  className="p-2 rounded-lg hover:bg-red-500/10 text-zinc-500 hover:text-red-400 transition-colors focus-ring"
+                  className="p-2 rounded-lg text-zinc-600 hover:text-red-400 hover:bg-red-500/8 transition-colors focus-ring"
                 >
                   <LogOut className="w-4 h-4" />
                 </button>
@@ -157,35 +151,36 @@ export function Navbar() {
             )}
           </div>
 
-          {/* Mobile menu toggle */}
+          {/* Mobile toggle */}
           <button
-            className="md:hidden p-2 rounded-lg hover:bg-white/5 text-zinc-400 transition-colors"
+            className="md:hidden p-2 rounded-lg text-zinc-400 hover:text-white hover:bg-white/5 transition-colors"
             onClick={() => setIsMobileOpen(!isMobileOpen)}
+            aria-label={isMobileOpen ? 'Fechar menu' : 'Abrir menu'}
           >
-            {isMobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+            {isMobileOpen ? <X className="w-5 h-5" /> : <Menu className="w-5 h-5" />}
           </button>
         </nav>
 
-        {/* Menu mobile */}
+        {/* Mobile menu */}
         {isMobileOpen && (
-          <div className="md:hidden bg-zinc-900/90 backdrop-blur-3xl px-4 py-4 space-y-1 mt-2 rounded-2xl animate-in fade-in slide-in-from-top-4 duration-300 shadow-2xl">
+          <div className="md:hidden border-t border-white/[0.06] bg-[#080808]/95 backdrop-blur-xl px-4 py-4 space-y-1 animate-fade-in">
             {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  target={link.external ? "_blank" : undefined}
-                  rel={link.external ? "noopener noreferrer" : undefined}
-                  className={cn(
-                    'block px-4 py-3 rounded-xl text-sm font-medium transition-all',
-                    pathname === link.href
-                      ? 'text-violet-400 bg-violet-500/10'
-                      : 'text-zinc-300 hover:text-white hover:bg-white/5'
-                  )}
-                >
-                  {link.label}
-                </Link>
+              <Link
+                key={link.href}
+                href={link.href}
+                target={link.external ? '_blank' : undefined}
+                rel={link.external ? 'noopener noreferrer' : undefined}
+                className={cn(
+                  'block px-4 py-2.5 rounded-lg text-sm transition-all',
+                  pathname === link.href
+                    ? 'text-white bg-white/5 font-medium'
+                    : 'text-zinc-400 hover:text-white hover:bg-white/5'
+                )}
+              >
+                {link.label}
+              </Link>
             ))}
-            <div className="pt-3 flex flex-col gap-2">
+            <div className="pt-3 flex flex-col gap-2 border-t border-white/[0.06] mt-2">
               {session ? (
                 <>
                   <Link href={isAdmin ? '/dashboard' : '/minha-conta'}>

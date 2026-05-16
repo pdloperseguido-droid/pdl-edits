@@ -1,4 +1,4 @@
-import { Star, Heart, MessageCircle } from 'lucide-react';
+import { Star } from 'lucide-react';
 
 const TESTIMONIALS = [
   {
@@ -53,66 +53,52 @@ const TESTIMONIALS = [
 
 export function TestimonialsSection() {
   return (
-    <section className="py-24 px-4 sm:px-6 relative overflow-hidden" aria-labelledby="testimonials-title">
-      {/* Background Glows */}
-      <div className="absolute top-0 left-1/4 w-[500px] h-[500px] bg-violet-600/5 blur-[120px] rounded-full -z-10" />
-      <div className="absolute bottom-0 right-1/4 w-[500px] h-[500px] bg-fuchsia-600/5 blur-[120px] rounded-full -z-10" />
-
+    <section className="py-28 px-4 sm:px-6" aria-labelledby="testimonials-title">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="text-center mb-16">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-violet-500/10 border border-violet-500/20 mb-4">
-            <span className="w-2 h-2 rounded-full bg-violet-500 animate-pulse" />
-            <span className="text-xs font-bold text-violet-400 uppercase tracking-widest font-display">
-              Feedback da Comunidade
-            </span>
-          </div>
-          <h2 id="testimonials-title" className="text-4xl md:text-5xl font-bold font-display">
-            O que <span className="text-gradient">estão falando</span>
+        <div className="mb-14">
+          <p className="badge-accent inline-flex mb-4">Depoimentos</p>
+          <h2 id="testimonials-title" className="text-3xl md:text-4xl font-bold font-display">
+            O que estão falando
           </h2>
         </div>
 
-        {/* Comments Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+        {/* Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4">
           {TESTIMONIALS.map((comment) => (
             <div
               key={comment.id}
-              className="glass-strong border border-white/5 rounded-[2rem] p-6 transition-all duration-300 hover:scale-[1.02] hover:border-violet-500/20 group"
+              className="card p-5 flex flex-col gap-4 group hover:border-violet-500/15 transition-all duration-200"
             >
-              <div className="flex gap-4">
-                {/* Avatar */}
-                <div className="flex-shrink-0">
-                  <div className="w-12 h-12 rounded-full overflow-hidden bg-zinc-800 ring-2 ring-white/5 group-hover:ring-violet-500/30 transition-all">
-                    <img
-                      src={comment.avatar}
-                      alt={comment.name}
-                      className="w-full h-full object-cover"
-                    />
-                  </div>
+              {/* Stars */}
+              <div className="flex gap-0.5">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-3.5 h-3.5 text-violet-500 fill-violet-500" />
+                ))}
+              </div>
+
+              {/* Texto */}
+              <p className="text-sm text-zinc-300 leading-relaxed flex-1">
+                &ldquo;{comment.text}&rdquo;
+              </p>
+
+              {/* Footer do card */}
+              <div className="flex items-center gap-3 pt-3 border-t border-white/[0.05]">
+                <div className="w-8 h-8 rounded-full overflow-hidden bg-zinc-800 flex-shrink-0">
+                  <img
+                    src={comment.avatar}
+                    alt={comment.name}
+                    className="w-full h-full object-cover"
+                  />
                 </div>
-
-                {/* Content */}
-                <div className="flex-grow min-w-0">
-                  <div className="flex items-center justify-between gap-2 mb-1">
-                    <div className="flex items-center gap-2 overflow-hidden">
-                      <span className="font-bold text-zinc-100 truncate hover:text-violet-400 transition-colors cursor-pointer">
-                        {comment.name}
-                      </span>
-                      <span className="text-xs text-zinc-500 whitespace-nowrap">{comment.time}</span>
-                    </div>
-                  </div>
-
-                  {/* Comment Text */}
-                  <p className="text-[15px] text-zinc-300 leading-snug mb-3">
-                    {comment.text}
-                  </p>
-
+                <div className="min-w-0">
+                  <p className="text-sm font-medium text-zinc-100 truncate">{comment.name}</p>
+                  <p className="text-xs text-zinc-600">{comment.time} atrás</p>
                 </div>
               </div>
             </div>
           ))}
         </div>
-
       </div>
     </section>
   );

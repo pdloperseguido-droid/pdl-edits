@@ -6,67 +6,65 @@
 }
 
 /* ================================================
-   PDL Edits — Design System Global
+   PDL Edits — Design System Global (Refatorado)
+   Inspiração: Linear, Vercel, Stripe
    ================================================ */
 
 @layer base {
   :root {
-    /* Cores principais */
-    --bg-primary: #0A0A0A;
-    --bg-secondary: #111111;
-    --bg-card: rgba(255, 255, 255, 0.03);
+    /* Fundo */
+    --bg-primary:   #080808;
+    --bg-secondary: #0f0f0f;
+    --bg-card:      #111111;
+    --bg-card-hover:#141414;
 
-    /* Roxo gradiente accent */
-    --accent-from: #7C3AED;
-    --accent-to: #A855F7;
-    --accent-mid: #9333EA;
+    /* Acento */
+    --accent:       #7C3AED;
+    --accent-light: #A855F7;
+    --accent-muted: rgba(124, 58, 237, 0.12);
 
     /* Texto */
-    --text-primary: #FFFFFF;
+    --text-primary:   #FAFAFA;
     --text-secondary: #A1A1AA;
-    --text-muted: #52525B;
+    --text-muted:     #52525B;
 
     /* Bordas */
-    --border: rgba(255, 255, 255, 0.08);
-    --border-accent: rgba(124, 58, 237, 0.4);
+    --border:        rgba(255, 255, 255, 0.07);
+    --border-strong: rgba(255, 255, 255, 0.12);
+    --border-accent: rgba(124, 58, 237, 0.35);
 
-    /* Status colors */
-    --status-pending: #F59E0B;
-    --status-confirmed: #3B82F6;
+    /* Status */
+    --status-pending:     #F59E0B;
+    --status-confirmed:   #3B82F6;
     --status-in-progress: #8B5CF6;
-    --status-review: #F97316;
-    --status-delivered: #10B981;
-    --status-cancelled: #EF4444;
+    --status-review:      #F97316;
+    --status-delivered:   #10B981;
+    --status-cancelled:   #EF4444;
 
     /* Fontes */
     --font-heading: var(--font-space), sans-serif;
-    --font-body: var(--font-inter), sans-serif;
+    --font-body:    var(--font-inter), sans-serif;
   }
 
-  /* Aplicação GLOBAL e agressiva para garantir o site todo */
   * {
     font-family: var(--font-body);
+    box-sizing: border-box;
   }
 
-  /* Títulos e Display - Space Grotesk */
-  h1, h2, h3, h4, 
-  .font-display, 
-  .font-heading,
-  .metric-value {
+  h1, h2, h3, h4,
+  .font-display,
+  .font-heading {
     font-family: var(--font-heading) !important;
-    letter-spacing: -0.03em;
+    letter-spacing: -0.035em;
   }
 
   h1 { @apply font-bold; }
   h2 { @apply font-semibold; }
   h3 { @apply font-semibold; }
 
-  /* Corpo de texto e UI - Inter */
-  body, p, span, button, input, label, textarea, select, 
-  .font-sans,
-  .ui-text {
+  body, p, span, button, input, label, textarea, select {
     font-family: var(--font-body);
-    letter-spacing: normal;
+    letter-spacing: -0.01em;
   }
 
   body {
@@ -78,65 +76,50 @@
 }
 
 /* ================================================
-   Scroll customizado
+   Scrollbar
    ================================================ */
-::-webkit-scrollbar { width: 6px; height: 6px; }
-::-webkit-scrollbar-track { background: #111; }
-::-webkit-scrollbar-thumb { background: #333; border-radius: 3px; }
+::-webkit-scrollbar        { width: 5px; height: 5px; }
+::-webkit-scrollbar-track  { background: #0a0a0a; }
+::-webkit-scrollbar-thumb  { background: #222; border-radius: 3px; }
 ::-webkit-scrollbar-thumb:hover { background: #7C3AED; }
 
 /* ================================================
    Seleção de texto
    ================================================ */
-::selection { background: rgba(124, 58, 237, 0.4); color: white; }
+::selection { background: rgba(124, 58, 237, 0.35); color: white; }
 
 /* ================================================
-   Gradientes de texto
+   Gradiente de texto
    ================================================ */
 .text-gradient {
-  background: linear-gradient(135deg, #7C3AED 0%, #A855F7 50%, #C084FC 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
-}
-
-.text-gradient-warm {
-  background: linear-gradient(135deg, #A855F7 0%, #EC4899 100%);
+  background: linear-gradient(135deg, #A78BFA 0%, #7C3AED 60%, #C084FC 100%);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
 }
 
 /* ================================================
-   Glass morphism
+   Glass — apenas onde necessário (navbar, modal)
    ================================================ */
 .glass {
   background: rgba(255, 255, 255, 0.03);
-  backdrop-filter: blur(20px);
-  -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.06);
-}
-
-.glass-strong {
-  background: rgba(255, 255, 255, 0.07);
-  backdrop-filter: blur(40px);
-  -webkit-backdrop-filter: blur(40px);
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border: 1px solid var(--border);
 }
 
 /* ================================================
-   Glow effects
+   Glass — mantido para compatibilidade com dashboard/auth/catálogo
    ================================================ */
-.glow-purple {
-  box-shadow: 0 0 30px rgba(124, 58, 237, 0.3), 0 0 60px rgba(124, 58, 237, 0.1);
-}
-
-.glow-purple-sm {
-  box-shadow: 0 0 15px rgba(124, 58, 237, 0.25);
+.glass-strong {
+  background: rgba(255, 255, 255, 0.05);
+  backdrop-filter: blur(32px);
+  -webkit-backdrop-filter: blur(32px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
 }
 
 /* ================================================
-   Gradiente de borda (border gradient)
+   Border gradient — mantido para compatibilidade
    ================================================ */
 .border-gradient {
   position: relative;
@@ -149,7 +132,7 @@
   inset: 0;
   border-radius: 16px;
   padding: 1px;
-  background: linear-gradient(135deg, rgba(124,58,237,0.5), rgba(168,85,247,0.2), transparent);
+  background: linear-gradient(135deg, rgba(124,58,237,0.4), rgba(168,85,247,0.15), transparent);
   -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
   -webkit-mask-composite: xor;
   mask-composite: exclude;
@@ -157,56 +140,62 @@
 }
 
 /* ================================================
-   Grain texture overlay
+   Card moderno (sem glass, fundo sólido)
    ================================================ */
-.grain::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  pointer-events: none;
-  opacity: 0.04;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-  z-index: 9999;
+.card {
+  background: var(--bg-card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  transition: border-color 0.2s ease, background 0.2s ease;
+}
+.card:hover {
+  border-color: var(--border-strong);
+  background: var(--bg-card-hover);
 }
 
 /* ================================================
-   Animações
+   Botão gradiente
    ================================================ */
-@keyframes fadeInUp {
-  from { opacity: 0; transform: translateY(30px); }
-  to   { opacity: 1; transform: translateY(0); }
+.btn-gradient {
+  background: linear-gradient(135deg, #7C3AED, #9333EA);
+  transition: all 0.2s ease;
+  position: relative;
+  overflow: hidden;
+}
+.btn-gradient::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(135deg, #9333EA, #7C3AED);
+  opacity: 0;
+  transition: opacity 0.2s ease;
+}
+.btn-gradient:hover::after  { opacity: 1; }
+.btn-gradient:active::after { opacity: 0.8; }
+.btn-gradient > * { position: relative; z-index: 1; }
+
+/* ================================================
+   Focus acessível
+   ================================================ */
+.focus-ring:focus-visible {
+  outline: 2px solid #7C3AED;
+  outline-offset: 2px;
 }
 
+/* ================================================
+   Animações simples e discretas
+   ================================================ */
+@keyframes fadeInUp {
+  from { opacity: 0; transform: translateY(20px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
 @keyframes fadeIn {
   from { opacity: 0; }
   to   { opacity: 1; }
 }
 
-@keyframes float {
-  0%, 100% { transform: translateY(0px); }
-  50%       { transform: translateY(-10px); }
-}
-
-@keyframes pulse-glow {
-  0%, 100% { box-shadow: 0 0 20px rgba(124,58,237,0.3); }
-  50%       { box-shadow: 0 0 40px rgba(124,58,237,0.6), 0 0 80px rgba(124,58,237,0.2); }
-}
-
-@keyframes shimmer {
-  0%   { background-position: -200% center; }
-  100% { background-position: 200% center; }
-}
-
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to   { transform: rotate(360deg); }
-}
-
-.animate-fade-in-up { animation: fadeInUp 0.6s ease-out both; }
-.animate-fade-in    { animation: fadeIn 0.4s ease-out both; }
-.animate-float      { animation: float 3s ease-in-out infinite; }
-.animate-pulse-glow { animation: pulse-glow 2s ease-in-out infinite; }
-.animate-spin-slow  { animation: spin-slow 8s linear infinite; }
+.animate-fade-in-up { animation: fadeInUp 0.5s ease-out both; }
+.animate-fade-in    { animation: fadeIn  0.4s ease-out both; }
 
 .animation-delay-100 { animation-delay: 0.1s; }
 .animation-delay-200 { animation-delay: 0.2s; }
@@ -216,23 +205,27 @@
 .animation-delay-600 { animation-delay: 0.6s; }
 
 /* ================================================
-   Shimmer loading skeleton
+   Shimmer skeleton
    ================================================ */
+@keyframes shimmer {
+  0%   { background-position: -200% center; }
+  100% { background-position:  200% center; }
+}
 .shimmer {
-  background: linear-gradient(90deg, #1a1a1a 25%, #2a2a2a 50%, #1a1a1a 75%);
+  background: linear-gradient(90deg, #111 25%, #1a1a1a 50%, #111 75%);
   background-size: 200% 100%;
   animation: shimmer 1.5s infinite;
 }
 
 /* ================================================
-   Hover card lift
+   Hover lift sutil
    ================================================ */
 .hover-lift {
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
 }
 .hover-lift:hover {
-  transform: translateY(-4px);
-  box-shadow: 0 20px 40px rgba(0,0,0,0.4), 0 0 30px rgba(124,58,237,0.15);
+  transform: translateY(-3px);
+  box-shadow: 0 16px 32px rgba(0,0,0,0.35);
 }
 
 /* ================================================
@@ -248,67 +241,58 @@
 .before-after-slider input[type="range"]::-webkit-slider-thumb {
   -webkit-appearance: none;
   appearance: none;
-  width: 40px;
-  height: 40px;
+  width: 36px;
+  height: 36px;
   border-radius: 50%;
   background: white;
   border: 3px solid #7C3AED;
-  box-shadow: 0 0 15px rgba(124,58,237,0.5);
+  box-shadow: 0 0 12px rgba(124,58,237,0.4);
   cursor: ew-resize;
 }
 
 /* ================================================
-   Custom focus ring acessível
+   Linha divisória com gradiente
    ================================================ */
-.focus-ring:focus-visible {
-  outline: 2px solid #7C3AED;
-  outline-offset: 2px;
+.divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--border-strong), transparent);
 }
 
 /* ================================================
-   Gradient button
+   Badge accent
    ================================================ */
-.btn-gradient {
-  background: linear-gradient(135deg, #7C3AED, #A855F7);
-  transition: all 0.3s ease;
-  position: relative;
-  overflow: hidden;
+.badge-accent {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: var(--accent-muted);
+  border: 1px solid rgba(124, 58, 237, 0.25);
+  color: #A78BFA;
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
 }
-.btn-gradient::before {
+
+/* ================================================
+   Grain texture (opcional, muito sutil)
+   ================================================ */
+.grain::after {
   content: '';
-  position: absolute;
+  position: fixed;
   inset: 0;
-  background: linear-gradient(135deg, #A855F7, #7C3AED);
-  opacity: 0;
-  transition: opacity 0.3s ease;
+  pointer-events: none;
+  opacity: 0.025;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 512 512' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
+  z-index: 9999;
 }
-.btn-gradient:hover::before { opacity: 1; }
-.btn-gradient > * { position: relative; z-index: 1; }
 
 /* ================================================
    Masonry grid
    ================================================ */
-.masonry-grid {
-  columns: 3;
-  column-gap: 1rem;
-}
-@media (max-width: 768px) {
-  .masonry-grid { columns: 1; }
-}
-@media (min-width: 769px) and (max-width: 1024px) {
-  .masonry-grid { columns: 2; }
-}
-.masonry-item {
-  break-inside: avoid;
-  margin-bottom: 1rem;
-}
-
-/* Cursor padrão gerenciado pelo componente CustomCursor.tsx */
-
-/* ================================================
-   Linha gradiente decorativa
-   ================================================ */
-.divider-gradient {
-  height: 1px;
-  background: linear-gradient(90deg, transparent, rgba(124,58,237,0.5), transparent);
-}
+.masonry-grid { columns: 3; column-gap: 1rem; }
+@media (max-width: 768px)  { .masonry-grid { columns: 1; } }
+@media (min-width: 769px) and (max-width: 1024px) { .masonry-grid { columns: 2; } }
+.masonry-item { break-inside: avoid; margin-bottom: 1rem; }
