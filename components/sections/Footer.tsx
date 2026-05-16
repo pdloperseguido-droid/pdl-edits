@@ -5,25 +5,19 @@ import { Button } from '@/components/ui/Button';
 import { toast } from 'sonner';
 import { useState } from 'react';
 
-interface FooterLink {
-  label: string;
-  href: string;
-  external?: boolean;
-}
-
-const FOOTER_LINKS: Record<string, FooterLink[]> = {
-  Serviços: [
+const FOOTER_LINKS = {
+  'Serviços': [
     { label: 'Edição de Vídeo', href: '/catalogo' },
     { label: 'Thumbnails', href: '/catalogo' },
     { label: 'Color Grading', href: '/catalogo' },
     { label: 'Motion Graphics', href: '/catalogo' },
   ],
-  Plataforma: [
+  'Plataforma': [
     { label: 'Portfólio', href: '/portfolio' },
     { label: 'Sobre Nós', href: '/sobre' },
     { label: 'Como Funciona', href: '/#como-funciona' },
   ],
-  Suporte: [
+  'Suporte': [
     { label: 'Minha Conta', href: '/minha-conta' },
     { label: 'Discord', href: 'https://discord.gg/Wg8f3e28yv', external: true },
     { label: 'Privacidade', href: '/privacidade' },
@@ -46,88 +40,87 @@ export function Footer() {
     if (!email) return;
     setIsSubmitting(true);
     await new Promise(resolve => setTimeout(resolve, 900));
-    toast.success('Inscrito com sucesso!', { description: 'Você receberá nossas novidades em breve.' });
+    toast.success('Inscrito com sucesso!');
     setEmail('');
     setIsSubmitting(false);
   };
 
   return (
-    <footer className="border-t border-white/[0.06] bg-[#080808]" role="contentinfo">
+    <footer className="bg-[#060606] border-t border-white/[0.05]" role="contentinfo">
+
       {/* CTA pré-footer */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-20">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-20">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div className="max-w-lg">
-            <h2 className="text-2xl md:text-3xl font-bold font-display text-white mb-2">
-              Pronto para elevar o nível do seu{' '}
-              <span className="text-gradient">conteúdo?</span>
+            <h2 className="text-2xl md:text-3xl font-black font-display tracking-tight text-white mb-3">
+              Pronto para ter vídeos que{' '}
+              <span className="text-gradient">realmente vendem?</span>
             </h2>
-            <p className="text-sm text-zinc-500">
-              Junte-se a centenas de criadores que já transformaram seus vídeos.
+            <p className="text-sm text-zinc-500 leading-relaxed">
+              Junte-se a centenas de criadores que já transformaram seu conteúdo com edição profissional.
+              Entrega em 72h, revisões incluídas.
             </p>
           </div>
           <div className="flex flex-col sm:flex-row gap-3 flex-shrink-0">
             <Link href="/catalogo">
               <Button size="md" rightIcon={<ArrowRight className="w-4 h-4" />}>
-                Ver Serviços
+                Contratar edição
               </Button>
             </Link>
             <Link href="/auth/register">
               <Button variant="secondary" size="md">
-                Criar Conta
+                Criar conta grátis
               </Button>
             </Link>
           </div>
         </div>
       </div>
 
-      {/* Divisor */}
-      <div className="divider mx-4 sm:mx-6" />
+      {/* Linha divisória de seção */}
+      <div className="max-w-6xl mx-auto px-5 sm:px-8">
+        <div className="h-px bg-white/[0.05]" />
+      </div>
 
-      {/* Grid principal */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-14">
+      {/* Grid de links */}
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-14">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
 
           {/* Brand */}
           <div className="lg:col-span-2 space-y-5">
-            <Link href="/" className="inline-block">
-              <img src="/logo.png" alt="PDL Edits Logo" className="h-8 w-auto" />
+            <Link href="/">
+              <img src="/logo.png" alt="PDL Edits" className="h-8 w-auto" />
             </Link>
             <p className="text-sm text-zinc-500 leading-relaxed max-w-xs">
-              Sua parceira em edição de vídeo e foto. Qualidade premium com entrega rápida.
+              Edição profissional de vídeo para criadores, marcas e empreendedores. Qualidade real, entrega rápida.
             </p>
-            <div className="flex items-center gap-2">
-              {SOCIALS.map((social) => {
-                const Icon = social.icon;
-                return (
-                  <a
-                    key={social.label}
-                    href={social.href}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                    className="w-8 h-8 rounded-lg bg-white/5 flex items-center justify-center text-zinc-500 hover:text-white hover:bg-white/10 transition-all border border-white/[0.05]"
-                    aria-label={social.label}
-                  >
-                    <Icon className="w-4 h-4" />
-                  </a>
-                );
-              })}
+            <div className="flex gap-2">
+              {SOCIALS.map(({ icon: Icon, href, label }) => (
+                <a
+                  key={label}
+                  href={href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={label}
+                  className="w-8 h-8 rounded-lg bg-white/[0.04] border border-white/[0.06] flex items-center justify-center text-zinc-500 hover:text-white hover:bg-white/[0.08] transition-all"
+                >
+                  <Icon className="w-4 h-4" />
+                </a>
+              ))}
             </div>
           </div>
 
           {/* Links */}
           {Object.entries(FOOTER_LINKS).map(([key, links]) => (
             <div key={key}>
-              <h3 className="text-xs font-semibold text-zinc-300 uppercase tracking-widest mb-5">
-                {key}
-              </h3>
+              <h3 className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest mb-5">{key}</h3>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
                     <Link
                       href={link.href}
-                      target={(link as FooterLink).external ? '_blank' : undefined}
-                      rel={(link as FooterLink).external ? 'noopener noreferrer' : undefined}
-                      className="text-sm text-zinc-500 hover:text-zinc-200 transition-colors"
+                      target={(link as any).external ? '_blank' : undefined}
+                      rel={(link as any).external ? 'noopener noreferrer' : undefined}
+                      className="text-[13px] text-zinc-500 hover:text-zinc-200 transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -139,23 +132,22 @@ export function Footer() {
         </div>
       </div>
 
-      {/* Divisor */}
-      <div className="divider mx-4 sm:mx-6" />
-
       {/* Bottom bar */}
-      <div className="max-w-6xl mx-auto px-4 sm:px-6 py-6 flex flex-col sm:flex-row items-center justify-between gap-4">
-        <p className="text-xs text-zinc-600">
-          © {new Date().getFullYear()} PDL Edits. Todos os direitos reservados.
-        </p>
-        <div className="flex items-center gap-2">
-          <a href="mailto:contato@pdledits.com" className="flex items-center gap-1.5 text-xs text-zinc-600 hover:text-zinc-400 transition-colors">
-            <Mail className="w-3.5 h-3.5" />
-            contato@pdledits.com
-          </a>
-          <span className="text-zinc-700">·</span>
-          <div className="flex items-center gap-1.5 text-xs text-zinc-600">
-            <MapPin className="w-3.5 h-3.5" />
-            São Paulo, Brasil
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 pb-8">
+        <div className="h-px bg-white/[0.04] mb-6" />
+        <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
+          <p className="text-[11px] text-zinc-700">
+            © {new Date().getFullYear()} PDL Edits. Todos os direitos reservados.
+          </p>
+          <div className="flex items-center gap-4">
+            <a href="mailto:contato@pdledits.com" className="flex items-center gap-1.5 text-[11px] text-zinc-700 hover:text-zinc-400 transition-colors">
+              <Mail className="w-3 h-3" />
+              contato@pdledits.com
+            </a>
+            <div className="flex items-center gap-1.5 text-[11px] text-zinc-700">
+              <MapPin className="w-3 h-3" />
+              São Paulo, Brasil
+            </div>
           </div>
         </div>
       </div>

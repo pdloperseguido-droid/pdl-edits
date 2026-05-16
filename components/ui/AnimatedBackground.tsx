@@ -3,8 +3,8 @@
 import { useEffect, useState } from 'react';
 
 /**
- * Background mínimo e moderno.
- * Fundo sólido escuro com grid ultra-sutil e um único brilho de acento.
+ * Background premium com imagem + sobreposição gradiente suave.
+ * Restaurado para preservar o visual anterior com bg-premium.png.
  */
 export function AnimatedBackground() {
   const [mounted, setMounted] = useState(false);
@@ -16,27 +16,44 @@ export function AnimatedBackground() {
   if (!mounted) return null;
 
   return (
-    <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none" style={{ background: '#080808' }}>
-      {/* Grid sutil */}
+    <div className="fixed inset-0 -z-10 overflow-hidden pointer-events-none bg-[#080808]">
+      {/* Imagem de fundo com zoom/pan suave */}
       <div
-        className="absolute inset-0 opacity-[0.025]"
+        className="absolute inset-[-5%] opacity-50"
         style={{
-          backgroundImage: `linear-gradient(rgba(255,255,255,.08) 1px, transparent 1px), linear-gradient(90deg, rgba(255,255,255,.08) 1px, transparent 1px)`,
-          backgroundSize: '72px 72px',
+          backgroundImage: 'url("/images/bg-premium.png")',
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
+          backgroundRepeat: 'no-repeat',
+          animation: 'bgPan 50s ease-in-out infinite',
         }}
       />
 
-      {/* Brilho radial de acento — único, centrado, bem discreto */}
+      {/* Gradiente escurecendo topo e base para garantir legibilidade do header e footer */}
+      <div className="absolute inset-0 bg-gradient-to-b from-[#080808] via-transparent to-[#080808] opacity-90" />
+      <div className="absolute inset-0 bg-gradient-to-r from-[#080808]/70 via-transparent to-[#080808]/70" />
+
+      {/* Acento violeta centralizado muito sutil */}
       <div
-        className="absolute top-0 left-1/2 -translate-x-1/2 w-[900px] h-[600px] opacity-[0.07]"
+        className="absolute top-1/3 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[700px] h-[500px] opacity-[0.06]"
         style={{
           background: 'radial-gradient(ellipse at center, #7C3AED 0%, transparent 70%)',
-          filter: 'blur(80px)',
+          filter: 'blur(60px)',
         }}
       />
 
-      {/* Gradiente de vinheta nas bordas */}
-      <div className="absolute inset-0" style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.6) 100%)' }} />
+      {/* Vinheta para foco central */}
+      <div
+        className="absolute inset-0"
+        style={{ background: 'radial-gradient(ellipse at center, transparent 30%, rgba(0,0,0,0.55) 100%)' }}
+      />
+
+      <style>{`
+        @keyframes bgPan {
+          0%, 100% { transform: scale(1) translate(0, 0); }
+          50% { transform: scale(1.04) translate(-1%, -1%); }
+        }
+      `}</style>
     </div>
   );
 }
