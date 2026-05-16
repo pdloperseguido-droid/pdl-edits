@@ -39,11 +39,11 @@ function HowItWorksSection() {
   ];
 
   return (
-    <section className="py-28 px-5 sm:px-8" id="como-funciona" aria-labelledby="process-title">
+    <section className="py-20 px-5 sm:px-8" id="como-funciona" aria-labelledby="process-title">
       <div className="max-w-6xl mx-auto">
         <div className="mb-14">
           <p className="badge-accent inline-flex mb-4">Como funciona</p>
-          <h2 id="process-title" className="text-3xl md:text-4xl font-black font-display tracking-tight">
+          <h2 id="process-title" className="uppercase text-3xl md:text-4xl font-black font-display tracking-tight">
             Do material bruto ao vídeo pronto{' '}
             <span className="text-gradient">em 3 passos</span>
           </h2>
@@ -66,8 +66,8 @@ function HowItWorksSection() {
                   <Icon className="w-5 h-5 text-white" aria-hidden="true" />
                 </div>
 
-                <h3 className="text-[15px] font-bold font-display text-white mb-2">{step.title}</h3>
-                <p className="text-sm text-zinc-500 leading-relaxed">{step.desc}</p>
+                <h3 className="uppercase text-[14px] font-bold font-display text-white mb-2">{step.title}</h3>
+                <p className="text-[13px] font-light text-zinc-500 leading-relaxed">{step.desc}</p>
               </div>
             );
           })}
@@ -98,17 +98,17 @@ function FormatsSection() {
   ];
 
   return (
-    <section className="py-24 px-5 sm:px-8 bg-[#050505]" aria-labelledby="formats-title">
+    <section className="py-16 px-5 sm:px-8 bg-[#050505]" aria-labelledby="formats-title">
       <div className="max-w-6xl mx-auto">
         <div className="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-12">
           <div>
             <p className="badge-accent inline-flex mb-4">Formatos</p>
-            <h2 id="formats-title" className="text-3xl md:text-4xl font-black font-display tracking-tight">
+            <h2 id="formats-title" className="uppercase text-3xl md:text-4xl font-black font-display tracking-tight">
               Editamos para<br />
               <span className="text-gradient">todos os formatos</span>
             </h2>
           </div>
-          <p className="text-sm text-zinc-500 max-w-xs">
+          <p className="text-[13px] font-light text-zinc-500 max-w-xs">
             Do vertical para redes sociais ao horizontal para YouTube — entregamos no formato que seu público consome.
           </p>
         </div>
@@ -121,9 +121,9 @@ function FormatsSection() {
             >
               <div className="flex items-center gap-3 mb-2">
                 <span className="w-2 h-2 rounded-full bg-violet-500 flex-shrink-0" />
-                <h3 className="text-[14px] font-bold font-display text-white">{f.label}</h3>
+                <h3 className="uppercase text-[13px] font-bold font-display text-white">{f.label}</h3>
               </div>
-              <p className="text-xs text-zinc-500 leading-relaxed pl-5">{f.desc}</p>
+              <p className="text-[12px] font-light text-zinc-500 leading-relaxed pl-5">{f.desc}</p>
             </div>
           ))}
         </div>

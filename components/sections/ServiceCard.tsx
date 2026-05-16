@@ -55,10 +55,10 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
       <div className="p-6 flex flex-col flex-1 gap-4">
         {/* Título e descrição */}
         <div>
-          <h3 className="text-[16px] font-bold font-display text-white mb-1.5 group-hover:text-violet-300 transition-colors leading-snug">
+          <h3 className="uppercase text-[16px] font-bold font-display text-white mb-1.5 group-hover:text-violet-300 transition-colors leading-snug">
             {title}
           </h3>
-          <p className="text-[13px] text-zinc-500 leading-relaxed line-clamp-2">
+          <p className="text-[12px] font-light text-zinc-500 leading-relaxed line-clamp-2">
             {service.shortDescription}
           </p>
         </div>
@@ -66,20 +66,20 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
         {/* Features */}
         <ul className="space-y-1.5 flex-1">
           {features.slice(0, 4).map((f: string) => (
-            <li key={f} className="flex items-start gap-2 text-[13px] text-zinc-400">
+            <li key={f} className="flex items-start gap-2 text-[12px] font-light text-zinc-400">
               <Check className="w-3.5 h-3.5 text-violet-500 flex-shrink-0 mt-0.5" />
               <span>{f}</span>
             </li>
           ))}
           {features.length > 4 && (
-            <li className="text-[12px] text-zinc-600 pl-5 font-medium">+{features.length - 4} itens inclusos</li>
+            <li className="text-[11px] font-light text-zinc-500 pl-5">+{features.length - 4} itens inclusos</li>
           )}
         </ul>
 
         {/* Footer */}
         <div className="pt-4 border-t border-white/[0.05] flex items-center justify-between gap-3">
           <div>
-            <p className="text-[11px] text-zinc-600 uppercase font-semibold tracking-wider mb-0.5">A partir de</p>
+            <p className="text-[10px] text-zinc-500 uppercase font-medium tracking-widest mb-0.5">A partir de</p>
             <div className="flex items-center gap-2">
               {service.slug === 'combo-highlight-thumbnail' && (
                 <span className="text-xs text-zinc-600 line-through">R$ 75,00</span>

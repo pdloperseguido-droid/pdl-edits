@@ -53,12 +53,12 @@ const TESTIMONIALS = [
 
 export function TestimonialsSection() {
   return (
-    <section className="py-28 px-4 sm:px-6" aria-labelledby="testimonials-title">
+    <section className="py-16 px-4 sm:px-6" aria-labelledby="testimonials-title">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="mb-14">
+        <div className="mb-10">
           <p className="badge-accent inline-flex mb-4">Depoimentos</p>
-          <h2 id="testimonials-title" className="text-3xl md:text-4xl font-bold font-display">
+          <h2 id="testimonials-title" className="uppercase text-3xl md:text-4xl font-black font-display">
             O que estão falando
           </h2>
         </div>
@@ -78,7 +78,7 @@ export function TestimonialsSection() {
               </div>
 
               {/* Texto */}
-              <p className="text-sm text-zinc-300 leading-relaxed flex-1">
+              <p className="text-[13px] font-light text-zinc-300 leading-relaxed flex-1">
                 &ldquo;{comment.text}&rdquo;
               </p>
 
@@ -92,8 +92,8 @@ export function TestimonialsSection() {
                   />
                 </div>
                 <div className="min-w-0">
-                  <p className="text-sm font-medium text-zinc-100 truncate">{comment.name}</p>
-                  <p className="text-xs text-zinc-600">{comment.time} atrás</p>
+                  <p className="uppercase text-[12px] font-semibold text-zinc-100 truncate">{comment.name}</p>
+                  <p className="text-[11px] font-light text-zinc-500">{comment.time} atrás</p>
                 </div>
               </div>
             </div>

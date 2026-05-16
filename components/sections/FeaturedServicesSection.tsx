@@ -15,19 +15,19 @@ export async function FeaturedServicesSection() {
   const dbServices = await getActiveServices();
 
   return (
-    <section className="py-28 px-4 sm:px-6" aria-labelledby="services-title">
+    <section className="py-16 px-4 sm:px-6" aria-labelledby="services-title">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-14">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-10">
           <div>
             <p className="badge-accent inline-flex mb-4">Serviços</p>
-            <h2 id="services-title" className="text-3xl md:text-4xl font-bold font-display">
+            <h2 id="services-title" className="uppercase text-3xl md:text-4xl font-black font-display">
               O que oferecemos
             </h2>
           </div>
           <Link
             href="/catalogo"
-            className="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-violet-400 transition-colors group"
+            className="inline-flex items-center gap-1.5 text-[13px] font-light text-zinc-500 hover:text-violet-400 transition-colors group"
           >
             Ver todos
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -66,15 +66,15 @@ export async function FeaturedServicesSection() {
                 {/* Body */}
                 <div className="p-5 flex flex-col gap-4 flex-1">
                   <div>
-                    <h3 className="text-sm font-semibold font-display text-white mb-1 group-hover:text-violet-300 transition-colors">
+                    <h3 className="uppercase text-[13px] font-bold font-display text-white mb-1 group-hover:text-violet-300 transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-xs text-zinc-500 line-clamp-2">{service.shortDescription}</p>
+                    <p className="text-[12px] font-light text-zinc-500 line-clamp-2">{service.shortDescription}</p>
                   </div>
 
                   <ul className="space-y-1.5 flex-1">
                     {features.slice(0, 4).map((f: string) => (
-                      <li key={f} className="flex items-start gap-2 text-xs text-zinc-400">
+                      <li key={f} className="flex items-start gap-2 text-[12px] font-light text-zinc-400">
                         <Check className="w-3.5 h-3.5 text-violet-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
                         {f}
                       </li>

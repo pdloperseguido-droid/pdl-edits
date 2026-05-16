@@ -41,7 +41,7 @@ export function FAQSection() {
     <section aria-labelledby="faq-title">
       <div className="mb-10">
         <p className="badge-accent inline-flex mb-4">Dúvidas frequentes</p>
-        <h2 id="faq-title" className="text-3xl md:text-4xl font-black font-display tracking-tight">
+        <h2 id="faq-title" className="uppercase text-3xl md:text-4xl font-black font-display tracking-tight">
           Perguntas que nossos{' '}
           <span className="text-gradient">clientes fazem</span>
         </h2>
@@ -64,7 +64,7 @@ export function FAQSection() {
                 className="w-full flex items-center justify-between gap-4 px-6 py-4 text-left group"
                 aria-expanded={isOpen}
               >
-                <span className={`text-[14px] font-semibold font-display leading-snug transition-colors ${isOpen ? 'text-violet-300' : 'text-white group-hover:text-zinc-200'}`}>
+                <span className={`uppercase text-[13px] font-semibold font-display leading-snug transition-colors ${isOpen ? 'text-violet-300' : 'text-white group-hover:text-zinc-200'}`}>
                   {faq.q}
                 </span>
                 <ChevronDown
@@ -76,7 +76,7 @@ export function FAQSection() {
 
               {isOpen && (
                 <div className="px-6 pb-5">
-                  <p className="text-[13.5px] text-zinc-400 leading-relaxed">
+                  <p className="text-[13px] font-light text-zinc-400 leading-relaxed">
                     {faq.a}
                   </p>
                 </div>

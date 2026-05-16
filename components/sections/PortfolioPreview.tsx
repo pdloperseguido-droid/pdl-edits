@@ -11,13 +11,13 @@ export async function PortfolioPreview() {
   if (featuredItems.length === 0) return null;
 
   return (
-    <section className="py-28 px-4 sm:px-6" aria-labelledby="portfolio-title">
+    <section className="py-16 px-4 sm:px-6" aria-labelledby="portfolio-title">
       <div className="max-w-6xl mx-auto">
         {/* Header */}
-        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-14">
+        <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-10">
           <div>
             <p className="badge-accent inline-flex mb-4">Portfólio</p>
-            <h2 id="portfolio-title" className="text-3xl md:text-4xl font-bold font-display">
+            <h2 id="portfolio-title" className="uppercase text-3xl md:text-4xl font-black font-display">
               Nosso trabalho
               <br />
               <span className="text-gradient">fala por si</span>
@@ -25,7 +25,7 @@ export async function PortfolioPreview() {
           </div>
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-1.5 text-sm text-zinc-500 hover:text-violet-400 transition-colors group"
+            className="inline-flex items-center gap-1.5 text-[13px] font-light text-zinc-500 hover:text-violet-400 transition-colors group"
           >
             Ver portfólio completo
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />

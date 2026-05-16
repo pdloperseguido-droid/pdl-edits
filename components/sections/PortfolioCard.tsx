@@ -137,7 +137,7 @@ export function PortfolioCard({ item }: PortfolioCardProps) {
       {/* Info */}
       <div className="p-4 bg-zinc-950/60 backdrop-blur-sm">
         <div className="flex items-start justify-between gap-2 mb-1.5">
-          <h3 className="text-[14px] font-bold font-display text-white leading-snug truncate">
+          <h3 className="uppercase text-[13px] font-bold font-display text-white leading-snug truncate">
             {item.title}
           </h3>
           <span className="text-[10px] text-zinc-600 uppercase font-semibold flex-shrink-0 mt-0.5">
@@ -146,13 +146,13 @@ export function PortfolioCard({ item }: PortfolioCardProps) {
         </div>
 
         {item.description && (
-          <p className="text-[12px] text-zinc-500 line-clamp-1 mb-2.5">{item.description}</p>
+          <p className="text-[11px] font-light text-zinc-500 line-clamp-1 mb-2">{item.description}</p>
         )}
 
         {/* Format tags */}
         <div className="flex flex-wrap gap-1">
           {categoryTags.map((tag) => (
-            <span key={tag} className="text-[10px] text-violet-400 bg-violet-500/10 border border-violet-500/15 px-2 py-0.5 rounded font-medium">
+            <span key={tag} className="text-[9px] font-light text-violet-400 bg-violet-500/10 border border-violet-500/15 px-2 py-0.5 rounded">
               {tag}
             </span>
           ))}

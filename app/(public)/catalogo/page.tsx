@@ -64,18 +64,18 @@ export default async function CatalogoPage() {
   const dbServices = await getActiveServices();
 
   return (
-    <div className="min-h-screen pt-28 pb-24 px-5 sm:px-8">
+    <div className="min-h-screen pt-20 pb-16 px-5 sm:px-8">
       <div className="max-w-6xl mx-auto">
 
         {/* Header da página */}
         <div className="mb-20">
           <p className="badge-accent inline-flex mb-5">Catálogo de Serviços</p>
-          <h1 className="text-4xl md:text-6xl font-black font-display tracking-tight mb-5">
+          <h1 className="uppercase text-4xl md:text-6xl font-black font-display tracking-tight mb-5">
             Edição profissional
             <br />
             <span className="text-gradient">para cada formato</span>
           </h1>
-          <p className="text-base text-zinc-400 max-w-2xl leading-relaxed">
+          <p className="text-[15px] font-light text-zinc-500 max-w-2xl leading-relaxed">
             Você envia o material bruto, nossa equipe organiza, edita e entrega o vídeo pronto para postar.
             Cortes, trilha, legenda, color grading e muito mais — dependendo do serviço escolhido.
           </p>
@@ -83,7 +83,7 @@ export default async function CatalogoPage() {
 
         {/* Padrões de Qualidade — refatorado */}
         <div className="mb-24">
-          <h2 className="text-xl font-bold font-display text-white mb-8">
+          <h2 className="uppercase text-xl font-bold font-display text-white mb-8">
             O que está incluído em nossos serviços
           </h2>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-3">
@@ -98,8 +98,8 @@ export default async function CatalogoPage() {
                     <Icon className="w-4 h-4 text-violet-400" />
                   </div>
                   <div className="min-w-0">
-                    <h3 className="text-[13.5px] font-semibold text-white mb-1 font-display">{item.title}</h3>
-                    <p className="text-xs text-zinc-500 leading-relaxed">{item.desc}</p>
+                    <h3 className="uppercase text-[13.5px] font-semibold text-white mb-1 font-display">{item.title}</h3>
+                    <p className="text-[12px] font-light text-zinc-500 leading-relaxed">{item.desc}</p>
                   </div>
                 </div>
               );
@@ -108,7 +108,7 @@ export default async function CatalogoPage() {
         </div>
 
         {/* Grid de serviços */}
-        <h2 className="text-xl font-bold font-display text-white mb-8">Escolha seu serviço</h2>
+        <h2 className="uppercase text-xl font-bold font-display text-white mb-8">Escolha seu serviço</h2>
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
           {dbServices.map((service, i) => (
             <ServiceCard key={service.id} service={service} index={i} />

@@ -11,7 +11,7 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative min-h-screen flex items-center justify-center pt-[68px]"
+      className="relative min-h-[90vh] flex items-center justify-center pt-[68px]"
       aria-label="PDL Edits — Edição de vídeo profissional"
     >
       <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 text-center">
@@ -25,7 +25,7 @@ export function HeroSection() {
         {/* Título principal — tipografia forte */}
         <h1
           className={cn(
-            'text-[clamp(2.8rem,8vw,6.5rem)] font-black font-display leading-[0.9] tracking-[-0.04em] mb-6',
+            'uppercase text-[clamp(2.5rem,7vw,6rem)] font-black font-display leading-[0.9] tracking-[-0.04em] mb-5',
             mounted ? 'animate-fade-in-up animation-delay-100' : 'opacity-0'
           )}
         >
@@ -37,18 +37,18 @@ export function HeroSection() {
         {/* Subtítulo com copy direta */}
         <p
           className={cn(
-            'text-[clamp(1rem,2.5vw,1.2rem)] text-zinc-400 max-w-2xl mx-auto leading-relaxed mb-10',
+            'text-[clamp(1rem,2vw,1.1rem)] text-zinc-500 font-light max-w-2xl mx-auto leading-relaxed mb-8',
             mounted ? 'animate-fade-in-up animation-delay-200' : 'opacity-0'
           )}
         >
           Transformamos seus vídeos brutos em conteúdos prontos para engajar, vender e fortalecer sua presença digital.{' '}
-          <strong className="text-zinc-200 font-semibold">Entrega em até 72h</strong>, comunicação direta e resultado profissional garantido.
+          <strong className="text-zinc-300 font-medium">Entrega em até 72h</strong>, comunicação direta e resultado profissional garantido.
         </p>
 
         {/* CTAs */}
         <div
           className={cn(
-            'flex flex-col sm:flex-row items-center justify-center gap-3 mb-16',
+            'flex flex-col sm:flex-row items-center justify-center gap-3 mb-12',
             mounted ? 'animate-fade-in-up animation-delay-300' : 'opacity-0'
           )}
         >

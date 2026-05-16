@@ -49,14 +49,14 @@ export function Footer() {
     <footer className="bg-[#060606] border-t border-white/[0.05]" role="contentinfo">
 
       {/* CTA pré-footer */}
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-20">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-12">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div className="max-w-lg">
-            <h2 className="text-2xl md:text-3xl font-black font-display tracking-tight text-white mb-3">
+            <h2 className="uppercase text-2xl md:text-3xl font-black font-display tracking-tight text-white mb-3">
               Pronto para ter vídeos que{' '}
               <span className="text-gradient">realmente vendem?</span>
             </h2>
-            <p className="text-sm text-zinc-500 leading-relaxed">
+            <p className="text-[13px] font-light text-zinc-500 leading-relaxed">
               Junte-se a centenas de criadores que já transformaram seu conteúdo com edição profissional.
               Entrega em 72h, revisões incluídas.
             </p>
@@ -82,7 +82,7 @@ export function Footer() {
       </div>
 
       {/* Grid de links */}
-      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-14">
+      <div className="max-w-6xl mx-auto px-5 sm:px-8 py-10">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 lg:gap-8">
 
           {/* Brand */}
@@ -90,7 +90,7 @@ export function Footer() {
             <Link href="/">
               <img src="/logo.png" alt="PDL Edits" className="h-8 w-auto" />
             </Link>
-            <p className="text-sm text-zinc-500 leading-relaxed max-w-xs">
+            <p className="text-[12px] font-light text-zinc-500 leading-relaxed max-w-xs">
               Edição profissional de vídeo para criadores, marcas e empreendedores. Qualidade real, entrega rápida.
             </p>
             <div className="flex gap-2">
@@ -112,7 +112,7 @@ export function Footer() {
           {/* Links */}
           {Object.entries(FOOTER_LINKS).map(([key, links]) => (
             <div key={key}>
-              <h3 className="text-[11px] font-bold text-zinc-400 uppercase tracking-widest mb-5">{key}</h3>
+              <h3 className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-5">{key}</h3>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
