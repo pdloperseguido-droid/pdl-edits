@@ -11,27 +11,31 @@ export function HeroSection() {
 
   return (
     <section
-      className="relative min-h-[90vh] flex items-center justify-center pt-[68px]"
+      className="relative min-h-[90vh] flex items-center justify-center pt-[68px] overflow-hidden"
       aria-label="PDL Edits — Edição de vídeo profissional"
     >
+      {/* Background radial glow para simular o efeito da imagem */}
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[600px] h-[400px] bg-violet-600/20 blur-[120px] rounded-full pointer-events-none" />
       <div className="relative z-10 max-w-5xl mx-auto px-5 sm:px-8 text-center">
 
         {/* Badge de contexto */}
         <div className={cn('inline-flex items-center gap-2 badge-accent mb-8', mounted ? 'animate-fade-in' : 'opacity-0')}>
-          <span className="w-1.5 h-1.5 rounded-full bg-violet-400 animate-pulse" />
-          Reels · Shorts · YouTube · Anúncios · Conteúdo Institucional
+          <span className="w-1.5 h-1.5 rounded-full bg-violet-400" />
+          <span className="uppercase text-[10px] sm:text-[11px] font-bold tracking-widest text-zinc-300">
+            Reels · Shorts · YouTube · Anúncios · Conteúdo Institucional
+          </span>
         </div>
 
         {/* Título principal — tipografia forte */}
         <h1
           className={cn(
-            'uppercase text-[clamp(2.5rem,7vw,6rem)] font-black font-display leading-[0.9] tracking-[-0.04em] mb-5',
+            'uppercase text-[clamp(2.5rem,7vw,6.5rem)] font-black font-display leading-[0.85] tracking-[-0.05em] mb-6',
             mounted ? 'animate-fade-in-up animation-delay-100' : 'opacity-0'
           )}
         >
           Seu vídeo bruto.
           <br />
-          <span className="text-gradient">Pronto para vender.</span>
+          <span className="text-[#A855F7] tracking-[-0.06em]">Pronto para vender.</span>
         </h1>
 
         {/* Subtítulo com copy direta */}
@@ -41,8 +45,8 @@ export function HeroSection() {
             mounted ? 'animate-fade-in-up animation-delay-200' : 'opacity-0'
           )}
         >
-          Transformamos seus vídeos brutos em conteúdos prontos para engajar, vender e fortalecer sua presença digital.{' '}
-          <strong className="text-zinc-300 font-medium">Entrega em até 72h</strong>, comunicação direta e resultado profissional garantido.
+          Transformamos gravações soltas em vídeos editados com ritmo, retenção e acabamento comercial.{' '}
+          <strong className="text-white font-bold">Entrega em até 72h</strong>, comunicação direta e padrão visual pronto para publicar.
         </p>
 
         {/* CTAs */}
@@ -53,12 +57,12 @@ export function HeroSection() {
           )}
         >
           <Link href="/catalogo">
-            <Button size="lg" rightIcon={<ArrowRight className="w-4 h-4" />}>
+            <Button size="lg" className="rounded-full bg-[#8B5CF6] hover:bg-[#7C3AED] px-8 py-6 font-bold" rightIcon={<ArrowRight className="w-4 h-4" />}>
               Contratar edição
             </Button>
           </Link>
           <Link href="/portfolio">
-            <Button variant="secondary" size="lg" leftIcon={<Play className="w-4 h-4" />}>
+            <Button variant="outline" size="lg" className="rounded-full border-white/10 hover:bg-white/5 bg-transparent px-8 py-6" leftIcon={<Play className="w-4 h-4 text-zinc-400" />}>
               Ver resultados
             </Button>
           </Link>
@@ -72,14 +76,13 @@ export function HeroSection() {
           )}
         >
           {[
-            { value: '500+', label: 'Vídeos entregues' },
-            { value: '4.9★', label: 'Avaliação dos clientes' },
-            { value: '72h', label: 'Prazo médio de entrega' },
-            { value: '100%', label: 'Satisfação ou refazemos' },
+            { value: '500+' },
+            { value: '4.9★' },
+            { value: '72h' },
+            { value: '100%' },
           ].map((s, i) => (
-            <div key={i} className="text-center">
-              <p className="text-[1.35rem] font-black font-display text-white tracking-tight">{s.value}</p>
-              <p className="text-xs text-zinc-500 mt-0.5">{s.label}</p>
+            <div key={i} className="text-center px-4">
+              <p className="text-[1.8rem] font-black font-display text-white tracking-tight">{s.value}</p>
             </div>
           ))}
         </div>
