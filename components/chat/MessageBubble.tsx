@@ -45,11 +45,14 @@ export function MessageBubble({
             alt={senderName}
             className="w-6 h-6 rounded-full object-cover ring-1 ring-white/10 shadow-lg"
           />
+        ) : isAdmin ? (
+          <img
+            src="/logo.png"
+            alt="PDL Edits"
+            className="w-6 h-6 rounded-full object-cover ring-1 ring-white/10 shadow-lg"
+          />
         ) : (
-          <div className={cn(
-            'w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black',
-            isAdmin ? 'btn-gradient text-white' : 'bg-zinc-800 text-zinc-500 border border-white/5'
-          )}>
+          <div className="w-6 h-6 rounded-full flex items-center justify-center text-[10px] font-black bg-zinc-800 text-zinc-500 border border-white/5">
             {senderName.charAt(0).toUpperCase()}
           </div>
         )}
