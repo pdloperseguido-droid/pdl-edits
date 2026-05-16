@@ -30,7 +30,7 @@ const FAQS = [
   },
   {
     q: 'Em que programas vocês editam?',
-    a: 'Usamos principalmente Adobe Premiere Pro, After Effects e DaVinci Resolve. Se você precisar dos arquivos-fonte do projeto, é só solicitar ao finalizar o pedido.',
+    a: 'Usamos principalmente Vegas Pro, After Effects e Photoshop. Se você precisar dos arquivos-fonte do projeto, é só solicitar ao finalizar o pedido.',
   },
 ];
 
