@@ -2,7 +2,7 @@
 
 @theme {
   --font-sans: var(--font-inter), ui-sans-serif, system-ui, sans-serif;
-  --font-display: var(--font-display), var(--font-inter), sans-serif;
+  --font-heading: var(--font-space-grotesk), ui-sans-serif, system-ui, sans-serif;
 }
 
 /* ================================================
@@ -42,7 +42,7 @@
     --status-cancelled:   #EF4444;
 
     /* Fontes */
-    --font-heading: var(--font-display), sans-serif;
+    --font-heading: var(--font-space-grotesk), sans-serif;
     --font-body:    var(--font-inter), sans-serif;
   }
 
@@ -52,15 +52,13 @@
   }
 
   h1, h2, h3, h4,
-  .font-display,
   .font-heading {
     font-family: var(--font-heading) !important;
-    letter-spacing: -0.035em;
   }
 
-  h1 { @apply font-bold; }
-  h2 { @apply font-semibold; }
-  h3 { @apply font-semibold; }
+  h1 { @apply font-extrabold tracking-[-0.04em]; }
+  h2 { @apply font-bold tracking-[-0.035em]; }
+  h3 { @apply font-semibold tracking-[-0.02em]; }
 
   body, p, span, button, input, label, textarea, select {
     font-family: var(--font-body);

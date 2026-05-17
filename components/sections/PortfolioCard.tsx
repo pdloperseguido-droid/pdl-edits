@@ -128,7 +128,7 @@ export function PortfolioCard({ item }: PortfolioCardProps) {
 
         {/* Category tag */}
         <div className="absolute top-3 left-3 z-10">
-          <span className="bg-black/70 backdrop-blur-sm text-white/90 text-[10px] font-semibold px-2.5 py-1 rounded-md border border-white/10 uppercase tracking-wide">
+          <span className="bg-black/70 backdrop-blur-sm text-white/90 font-sans text-[10px] font-semibold px-2.5 py-1 rounded-md border border-white/10 uppercase tracking-[0.04em]">
             {item.category}
           </span>
         </div>
@@ -137,22 +137,22 @@ export function PortfolioCard({ item }: PortfolioCardProps) {
       {/* Info */}
       <div className="p-4 bg-zinc-950/60 backdrop-blur-sm">
         <div className="flex items-start justify-between gap-2 mb-1.5">
-          <h3 className="uppercase text-[13px] font-bold font-display text-white leading-snug truncate">
+          <h3 className="font-heading text-[14px] font-semibold tracking-[-0.01em] leading-snug text-white truncate">
             {item.title}
           </h3>
-          <span className="text-[10px] text-zinc-600 uppercase font-semibold flex-shrink-0 mt-0.5">
+          <span className="font-sans text-[10px] text-zinc-500 uppercase font-medium tracking-[0.08em] flex-shrink-0 mt-0.5">
             {isVideo ? 'Vídeo' : 'Foto'}
           </span>
         </div>
 
         {item.description && (
-          <p className="text-[11px] font-light text-zinc-500 line-clamp-1 mb-2">{item.description}</p>
+          <p className="font-sans text-[11px] font-normal text-zinc-500 line-clamp-1 mb-2">{item.description}</p>
         )}
 
         {/* Format tags */}
         <div className="flex flex-wrap gap-1">
           {categoryTags.map((tag) => (
-            <span key={tag} className="text-[9px] font-light text-violet-400 bg-violet-500/10 border border-violet-500/15 px-2 py-0.5 rounded">
+            <span key={tag} className="font-sans text-[9px] font-medium tracking-[0.02em] text-violet-400 bg-violet-500/10 border border-violet-500/15 px-2 py-0.5 rounded">
               {tag}
             </span>
           ))}

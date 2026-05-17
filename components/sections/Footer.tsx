@@ -52,11 +52,11 @@ export function Footer() {
       <div className="max-w-6xl mx-auto px-5 sm:px-8 py-12">
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div className="max-w-lg">
-            <h2 className="uppercase text-2xl md:text-3xl font-black font-display tracking-tight text-white mb-3">
+            <h2 className="font-heading uppercase text-2xl md:text-3xl font-bold tracking-[-0.035em] text-white mb-3">
               Pronto para ter vídeos que{' '}
               <span className="text-gradient">realmente vendem?</span>
             </h2>
-            <p className="text-[13px] font-light text-zinc-500 leading-relaxed">
+            <p className="font-sans text-[13px] font-normal leading-relaxed text-zinc-400">
               Junte-se a centenas de criadores que já transformaram seu conteúdo com edição profissional.
               Entrega em 72h, revisões incluídas.
             </p>
@@ -90,7 +90,7 @@ export function Footer() {
             <Link href="/">
               <img src="/logo.png" alt="PDL Edits" className="h-8 w-auto" />
             </Link>
-            <p className="text-[12px] font-light text-zinc-500 leading-relaxed max-w-xs">
+            <p className="font-sans text-[12px] font-normal text-zinc-400 leading-relaxed max-w-xs">
               Edição profissional de vídeo para criadores, marcas e empreendedores. Qualidade real, entrega rápida.
             </p>
             <div className="flex gap-2">
@@ -112,7 +112,7 @@ export function Footer() {
           {/* Links */}
           {Object.entries(FOOTER_LINKS).map(([key, links]) => (
             <div key={key}>
-              <h3 className="text-[10px] font-bold text-zinc-400 uppercase tracking-widest mb-5">{key}</h3>
+              <h3 className="font-sans text-[11px] font-semibold text-zinc-400 uppercase tracking-[0.06em] mb-5">{key}</h3>
               <ul className="space-y-3">
                 {links.map((link) => (
                   <li key={link.label}>
@@ -120,7 +120,7 @@ export function Footer() {
                       href={link.href}
                       target={(link as any).external ? '_blank' : undefined}
                       rel={(link as any).external ? 'noopener noreferrer' : undefined}
-                      className="text-[13px] text-zinc-500 hover:text-zinc-200 transition-colors"
+                      className="font-sans text-[13px] font-medium tracking-[-0.01em] text-zinc-500 hover:text-zinc-200 transition-colors"
                     >
                       {link.label}
                     </Link>
@@ -136,15 +136,15 @@ export function Footer() {
       <div className="max-w-6xl mx-auto px-5 sm:px-8 pb-8">
         <div className="h-px bg-white/[0.04] mb-6" />
         <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
-          <p className="text-[11px] text-zinc-700">
+          <p className="font-sans text-[11px] font-medium tracking-[0.02em] text-zinc-500">
             © {new Date().getFullYear()} PDL Edits. Todos os direitos reservados.
           </p>
           <div className="flex items-center gap-4">
-            <a href="mailto:contato@pdledits.com" className="flex items-center gap-1.5 text-[11px] text-zinc-700 hover:text-zinc-400 transition-colors">
+            <a href="mailto:contato@pdledits.com" className="flex items-center gap-1.5 font-sans text-[11px] font-medium tracking-[0.02em] text-zinc-500 hover:text-zinc-400 transition-colors">
               <Mail className="w-3 h-3" />
               contato@pdledits.com
             </a>
-            <div className="flex items-center gap-1.5 text-[11px] text-zinc-700">
+            <div className="flex items-center gap-1.5 font-sans text-[11px] font-medium tracking-[0.02em] text-zinc-500">
               <MapPin className="w-3 h-3" />
               São Paulo, Brasil
             </div>

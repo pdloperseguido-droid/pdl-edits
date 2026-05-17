@@ -29,24 +29,24 @@ export function HeroSection() {
         {/* Título principal — tipografia forte */}
         <h1
           className={cn(
-            'uppercase text-[clamp(2.5rem,7vw,6.5rem)] font-black font-display leading-[0.85] tracking-[-0.05em] mb-6',
+            'font-heading text-4xl md:text-6xl lg:text-[6.5rem] font-extrabold tracking-[-0.045em] leading-[0.95] mb-6',
             mounted ? 'animate-fade-in-up animation-delay-100' : 'opacity-0'
           )}
         >
-          Seu material original.
+          SEU MATERIAL ORIGINAL.
           <br />
-          <span className="text-[#A855F7] tracking-[-0.06em]">Pronto para vender.</span>
+          <span className="text-[#A855F7]">PRONTO PARA VENDER.</span>
         </h1>
 
         {/* Subtítulo com copy direta */}
         <p
           className={cn(
-            'text-[clamp(1rem,2vw,1.1rem)] text-zinc-400 font-normal max-w-2xl mx-auto leading-relaxed mb-8',
+            'font-sans text-[clamp(1rem,2vw,1.1rem)] text-zinc-400 font-normal max-w-2xl mx-auto leading-relaxed mb-8',
             mounted ? 'animate-fade-in-up animation-delay-200' : 'opacity-0'
           )}
         >
           Transformamos gravações soltas em vídeos editados com ritmo, retenção e acabamento comercial.{' '}
-          <strong className="text-white font-bold">Entrega em até 72h</strong>, comunicação direta e padrão visual pronto para publicar.
+          <strong className="text-white font-semibold">Entrega em até 72h</strong>, comunicação direta e padrão visual pronto para publicar.
         </p>
 
         {/* CTAs */}
@@ -57,12 +57,12 @@ export function HeroSection() {
           )}
         >
           <Link href="/catalogo">
-            <Button size="lg" className="rounded-full bg-[#8B5CF6] hover:bg-[#7C3AED] px-8 py-6 font-bold" rightIcon={<ArrowRight className="w-4 h-4" />}>
+            <Button size="lg" className="rounded-full bg-[#8B5CF6] hover:bg-[#7C3AED] px-8 py-6 font-sans text-[15px] font-semibold tracking-[-0.01em]" rightIcon={<ArrowRight className="w-4 h-4" />}>
               Contratar edição
             </Button>
           </Link>
           <Link href="/portfolio">
-            <Button variant="outline" size="lg" className="rounded-full border-white/10 hover:bg-white/5 bg-transparent px-8 py-6" leftIcon={<Play className="w-4 h-4 text-zinc-400" />}>
+            <Button variant="outline" size="lg" className="rounded-full border-white/10 hover:bg-white/5 bg-transparent px-8 py-6 font-sans text-[15px] font-medium tracking-[-0.01em]" leftIcon={<Play className="w-4 h-4 text-zinc-400" />}>
               Ver resultados
             </Button>
           </Link>

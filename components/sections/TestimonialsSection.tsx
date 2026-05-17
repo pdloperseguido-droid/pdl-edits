@@ -58,7 +58,7 @@ export function TestimonialsSection() {
         {/* Header */}
         <div className="mb-10">
           <p className="badge-accent inline-flex mb-4">Depoimentos</p>
-          <h2 id="testimonials-title" className="uppercase text-3xl md:text-4xl font-black font-display">
+          <h2 id="testimonials-title" className="font-heading uppercase text-3xl md:text-4xl font-bold tracking-[-0.035em] leading-tight">
             O que estão falando
           </h2>
         </div>
@@ -78,7 +78,7 @@ export function TestimonialsSection() {
               </div>
 
               {/* Texto */}
-              <p className="text-[13px] font-light text-zinc-300 leading-relaxed flex-1">
+              <p className="font-sans text-[13px] font-normal leading-relaxed text-zinc-300 flex-1">
                 &ldquo;{comment.text}&rdquo;
               </p>
 
@@ -92,8 +92,8 @@ export function TestimonialsSection() {
                   />
                 </div>
                 <div className="min-w-0">
-                  <p className="uppercase text-[12px] font-semibold text-zinc-100 truncate">{comment.name}</p>
-                  <p className="text-[11px] font-light text-zinc-500">{comment.time} atrás</p>
+                  <p className="font-sans uppercase text-[12px] font-semibold tracking-[0.02em] text-zinc-100 truncate">{comment.name}</p>
+                  <p className="font-sans text-[11px] font-medium text-zinc-500">{comment.time} atrás</p>
                 </div>
               </div>
             </div>

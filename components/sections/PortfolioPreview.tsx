@@ -17,7 +17,7 @@ export async function PortfolioPreview() {
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-10">
           <div>
             <p className="badge-accent inline-flex mb-4">Portfólio</p>
-            <h2 id="portfolio-title" className="uppercase text-3xl md:text-4xl font-black font-display">
+            <h2 id="portfolio-title" className="font-heading uppercase text-3xl md:text-4xl font-bold tracking-[-0.035em] leading-tight">
               Nosso trabalho
               <br />
               <span className="text-gradient">fala por si</span>
@@ -25,7 +25,7 @@ export async function PortfolioPreview() {
           </div>
           <Link
             href="/portfolio"
-            className="inline-flex items-center gap-1.5 text-[13px] font-light text-zinc-500 hover:text-violet-400 transition-colors group"
+            className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-sans text-[13px] font-medium text-zinc-400 transition-all duration-200 ease-out hover:text-white hover:bg-white/5 group"
           >
             Ver portfólio completo
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />

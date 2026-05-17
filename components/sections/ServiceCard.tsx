@@ -44,7 +44,7 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
             </span>
           )}
           {tags.slice(0, 2).map((tag: string) => (
-            <span key={tag} className="bg-black/60 backdrop-blur-sm text-white/80 text-[10px] font-semibold px-2.5 py-0.5 rounded-full border border-white/10">
+            <span key={tag} className="bg-black/60 backdrop-blur-sm text-white/80 font-sans text-[10px] font-semibold tracking-[0.04em] px-2.5 py-0.5 rounded-full border border-white/10 uppercase">
               {tag}
             </span>
           ))}
@@ -55,10 +55,10 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
       <div className="p-6 flex flex-col flex-1 gap-4">
         {/* Título e descrição */}
         <div>
-          <h3 className="uppercase text-[16px] font-bold font-display text-white mb-1.5 group-hover:text-violet-300 transition-colors leading-snug">
+          <h3 className="font-heading text-[15px] font-semibold tracking-[-0.02em] leading-snug text-white mb-1.5 group-hover:text-violet-300 transition-colors">
             {title}
           </h3>
-          <p className="text-[12px] font-light text-zinc-500 leading-relaxed line-clamp-2">
+          <p className="font-sans text-[13px] font-normal leading-relaxed text-zinc-400 line-clamp-2">
             {service.shortDescription}
           </p>
         </div>
@@ -66,25 +66,25 @@ export function ServiceCard({ service, index }: ServiceCardProps) {
         {/* Features */}
         <ul className="space-y-1.5 flex-1">
           {features.slice(0, 4).map((f: string) => (
-            <li key={f} className="flex items-start gap-2 text-[12px] font-light text-zinc-400">
+            <li key={f} className="flex items-start gap-2 font-sans text-[12px] font-normal text-zinc-400">
               <Check className="w-3.5 h-3.5 text-violet-500 flex-shrink-0 mt-0.5" />
               <span>{f}</span>
             </li>
           ))}
           {features.length > 4 && (
-            <li className="text-[11px] font-light text-zinc-500 pl-5">+{features.length - 4} itens inclusos</li>
+            <li className="font-sans text-[11px] font-normal text-zinc-500 pl-5">+{features.length - 4} itens inclusos</li>
           )}
         </ul>
 
         {/* Footer */}
         <div className="pt-4 border-t border-white/[0.05] flex items-center justify-between gap-3">
           <div>
-            <p className="text-[10px] text-zinc-500 uppercase font-medium tracking-widest mb-0.5">A partir de</p>
+            <p className="font-sans text-[10px] text-zinc-500 uppercase font-medium tracking-[0.08em] mb-0.5">A partir de</p>
             <div className="flex items-center gap-2">
               {service.slug === 'combo-highlight-thumbnail' && (
-                <span className="text-xs text-zinc-600 line-through">R$ 75,00</span>
+                <span className="font-sans text-[11px] text-zinc-600 line-through">R$ 75,00</span>
               )}
-              <span className="text-xl font-black font-display text-white">{formatPrice(Number(service.price))}</span>
+              <span className="font-heading text-xl font-bold tracking-[-0.01em] text-white">{formatPrice(Number(service.price))}</span>
             </div>
           </div>
 

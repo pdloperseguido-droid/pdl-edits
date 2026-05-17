@@ -1,15 +1,19 @@
 import type { Metadata } from 'next';
-import { Inter, Outfit } from 'next/font/google';
+import { Inter, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 
 import { CustomCursor } from '@/components/ui/CustomCursor';
 import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
 
-const inter = Inter({ subsets: ['latin'], variable: '--font-inter' });
-const outfit = Outfit({ 
+const inter = Inter({ 
   subsets: ['latin'], 
-  variable: '--font-display',
-  weight: ['300', '400', '500', '600', '700', '800', '900'] 
+  variable: '--font-inter', 
+  display: 'swap' 
+});
+const spaceGrotesk = Space_Grotesk({ 
+  subsets: ['latin'], 
+  variable: '--font-space-grotesk',
+  display: 'swap'
 });
 
 export const metadata: Metadata = {
@@ -38,7 +42,7 @@ export default function RootLayout({
 }) {
   return (
     <html lang="pt-BR" className="dark scroll-smooth">
-      <body className={`${inter.variable} ${outfit.variable} font-sans text-white antialiased`}>
+      <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans text-white antialiased`}>
         <CustomCursor />
         <AnimatedBackground />
         {children}

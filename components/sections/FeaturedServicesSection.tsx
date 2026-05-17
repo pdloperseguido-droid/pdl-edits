@@ -21,13 +21,13 @@ export async function FeaturedServicesSection() {
         <div className="flex flex-col md:flex-row items-start md:items-end justify-between gap-6 mb-10">
           <div>
             <p className="badge-accent inline-flex mb-4">Serviços</p>
-            <h2 id="services-title" className="uppercase text-3xl md:text-4xl font-black font-display">
+            <h2 id="services-title" className="font-heading uppercase text-3xl md:text-4xl font-bold tracking-[-0.035em] leading-tight">
               O que oferecemos
             </h2>
           </div>
           <Link
             href="/catalogo"
-            className="inline-flex items-center gap-1.5 text-[13px] font-light text-zinc-500 hover:text-violet-400 transition-colors group"
+            className="inline-flex items-center gap-1.5 rounded-lg px-2.5 py-1.5 font-sans text-[13px] font-medium text-zinc-400 transition-all duration-200 ease-out hover:text-white hover:bg-white/5 group"
           >
             Ver todos
             <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-0.5 transition-transform" />
@@ -66,15 +66,15 @@ export async function FeaturedServicesSection() {
                 {/* Body */}
                 <div className="p-5 flex flex-col gap-4 flex-1">
                   <div>
-                    <h3 className="uppercase text-[13px] font-bold font-display text-white mb-1 group-hover:text-violet-300 transition-colors">
+                    <h3 className="font-heading text-[15px] font-semibold tracking-[-0.02em] leading-snug text-white mb-1 group-hover:text-violet-300 transition-colors">
                       {service.title}
                     </h3>
-                    <p className="text-[12px] font-light text-zinc-500 line-clamp-2">{service.shortDescription}</p>
+                    <p className="font-sans text-[13px] font-normal leading-relaxed text-zinc-400 line-clamp-2">{service.shortDescription}</p>
                   </div>
 
                   <ul className="space-y-1.5 flex-1">
                     {features.slice(0, 4).map((f: string) => (
-                      <li key={f} className="flex items-start gap-2 text-[12px] font-light text-zinc-400">
+                      <li key={f} className="flex items-start gap-2 font-sans text-[12px] font-normal text-zinc-400">
                         <Check className="w-3.5 h-3.5 text-violet-500 flex-shrink-0 mt-0.5" aria-hidden="true" />
                         {f}
                       </li>
@@ -82,9 +82,9 @@ export async function FeaturedServicesSection() {
                   </ul>
 
                   <div className="pt-3 border-t border-white/[0.05] flex items-center justify-between gap-3">
-                    <p className="text-xs text-zinc-500">
+                    <p className="font-sans text-[10px] text-zinc-500 uppercase font-medium tracking-[0.08em]">
                       A partir de{' '}
-                      <span className="text-white font-semibold font-display text-sm">
+                      <span className="text-white font-heading font-semibold text-sm tracking-[-0.01em] normal-case">
                         {Number(service.price).toLocaleString('pt-BR', { style: 'currency', currency: 'BRL' })}
                       </span>
                     </p>

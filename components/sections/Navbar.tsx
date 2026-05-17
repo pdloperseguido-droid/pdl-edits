@@ -70,7 +70,7 @@ export function Navbar() {
                   <Link
                     href={href}
                     className={cn(
-                      'relative px-4 py-2 rounded-lg text-[13.5px] font-medium transition-colors duration-150 focus-ring',
+                      'relative px-4 py-2 rounded-lg font-sans text-sm font-medium tracking-[-0.01em] transition-colors duration-150 focus-ring',
                       pathname === href
                         ? 'text-white'
                         : 'text-zinc-400 hover:text-zinc-100'
@@ -114,7 +114,7 @@ export function Navbar() {
                         <User className="w-3 h-3 text-white" />
                       </div>
                     )}
-                    <span className="text-[13px] text-zinc-300 max-w-[90px] truncate">{session.user.name.split(' ')[0]}</span>
+                    <span className="font-sans text-[13px] font-medium tracking-[-0.01em] text-zinc-300 max-w-[90px] truncate">{session.user.name.split(' ')[0]}</span>
                   </Link>
 
                   <button
@@ -156,7 +156,7 @@ export function Navbar() {
                 key={href}
                 href={href}
                 className={cn(
-                  'block px-4 py-3 rounded-xl text-[14px] font-medium transition-colors',
+                  'block px-4 py-3 rounded-xl font-sans text-[14px] font-medium tracking-[-0.01em] transition-colors',
                   pathname === href
                     ? 'text-white bg-white/[0.06]'
                     : 'text-zinc-400 hover:text-white hover:bg-white/[0.04]'
