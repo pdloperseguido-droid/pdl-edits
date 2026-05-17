@@ -8,6 +8,7 @@ import { getMessages } from '@/server/actions/messages';
 import { ChatInterface } from '@/components/chat/ChatInterface';
 import { LinkifiedText } from '@/components/ui/LinkifiedText';
 import { OrderStatusBadge } from '@/components/chat/OrderStatusBadge';
+import { DeliverForm } from '@/components/chat/DeliverForm';
 import { formatPrice, formatDate } from '@/lib/utils';
 import type { OrderStatus } from '@/lib/db/schema';
 
@@ -71,6 +72,8 @@ export default async function AdminChatPage({ params }: { params: Promise<{ id: 
               </div>
             </div>
           </div>
+
+          <DeliverForm orderId={id} initialDeliverableUrl={order.deliverableUrl} />
 
           {order.notes && (
             <div>

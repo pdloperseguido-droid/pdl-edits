@@ -234,3 +234,43 @@ export async function getOrderById(orderId: string) {
 
   return order;
 }
+
+// ============================================
+// Entrega o link do projeto (apenas ADMIN)
+// ============================================
+export async function deliverOrder(data: {
+  orderId: string;
+  deliverableUrl: string;
+}) {
+  const session = await auth();
+  if (!session?.user || session.user.role !== 'ADMIN') {
+    return { error: 'Acesso negado' };
+  }
+
+  if (!data.deliverableUrl.trim().startsWith('http')) {
+    return { error: 'O link de entrega deve ser uma URL válida (começando com http:// ou https://)' };
+  }
+
+  await db
+    .update(orders)
+    .set({ 
+      deliverableUrl: data.deliverableUrl.trim(),
+      status: 'REVIEW' // Muda o status para REVIEW (Aguardando Revisão) ao entregar
+    })
+    .where(eq(orders.id, data.orderId));
+
+  // Envia mensagem automática no chat notificando o cliente
+  await db.insert(messages).values({
+    id: randomUUID(),
+    orderId: data.orderId,
+    senderId: session.user.id,
+    content: `🔔 NOVO ENTREGÁVEL DISPONÍVEL! Acesse o link de entrega para revisar o material: ${data.deliverableUrl.trim()} 🎬`,
+  });
+
+  revalidatePath(`/dashboard/pedidos/${data.orderId}/chat`);
+  revalidatePath(`/minha-conta/pedido/${data.orderId}/chat`);
+  revalidatePath('/dashboard/pedidos');
+  revalidatePath('/minha-conta');
+
+  return { success: true };
+}

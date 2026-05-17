@@ -76,6 +76,29 @@ export default async function ClientChatPage({ params }: { params: Promise<{ id:
             </div>
           )}
 
+          {order.deliverableUrl && (
+            <div className="glass border border-emerald-500/20 bg-emerald-500/5 rounded-xl p-4 space-y-3">
+              <div>
+                <p className="text-[11px] text-emerald-400 font-bold uppercase tracking-wider flex items-center gap-1.5">
+                  <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse" />
+                  Projeto Entregue!
+                </p>
+                <p className="text-[10px] text-zinc-400 mt-1">Acesse e assista ao seu vídeo finalizado no link abaixo:</p>
+              </div>
+              <a 
+                href={order.deliverableUrl} 
+                target="_blank" 
+                rel="noreferrer" 
+                className="flex items-center justify-between p-2.5 bg-black/40 border border-white/5 rounded-lg group hover:bg-emerald-500/10 hover:border-emerald-500/20 transition-all"
+              >
+                <span className="text-[10px] font-medium text-white truncate max-w-[100px]">{order.deliverableUrl}</span>
+                <span className="text-[10px] font-bold text-emerald-400 flex items-center gap-1 flex-shrink-0">
+                  Acessar <ArrowLeft className="w-3 h-3 rotate-180 group-hover:translate-x-0.5 transition-transform" />
+                </span>
+              </a>
+            </div>
+          )}
+
           <div className="glass border border-violet-500/15 rounded-xl p-4">
             <p className="text-xs text-violet-300 font-medium mb-1">💡 Dica</p>
             <p className="text-xs text-zinc-400 leading-relaxed">

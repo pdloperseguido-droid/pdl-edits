@@ -41,6 +41,7 @@ export function ServiceManager({ initialItems }: ServiceManagerProps) {
 
   // State para arrays do formulário
   const [featureInput, setFeatureInput] = useState('');
+  const [notIncludedInput, setNotIncludedInput] = useState('');
   const [tagInput, setTagInput] = useState('');
 
   const handleOpenModal = (item?: any) => {
@@ -138,6 +139,18 @@ export function ServiceManager({ initialItems }: ServiceManagerProps) {
     const newFeatures = [...(formData.features || [])];
     newFeatures.splice(index, 1);
     setFormData({ ...formData, features: newFeatures });
+  };
+
+  const addNotIncluded = () => {
+    if (!notIncludedInput.trim()) return;
+    setFormData({ ...formData, notIncluded: [...(formData.notIncluded || []), notIncludedInput.trim()] });
+    setNotIncludedInput('');
+  };
+
+  const removeNotIncluded = (index: number) => {
+    const newNotIncluded = [...(formData.notIncluded || [])];
+    newNotIncluded.splice(index, 1);
+    setFormData({ ...formData, notIncluded: newNotIncluded });
   };
 
   return (
@@ -323,6 +336,70 @@ export function ServiceManager({ initialItems }: ServiceManagerProps) {
                   </button>
                 </Badge>
               ))}
+            </div>
+          </div>
+
+          {/* Gerenciamento de Not Included */}
+          <div className="space-y-3">
+            <label className="text-sm font-medium text-zinc-300 flex items-center gap-2">
+              <List className="w-4 h-4" /> Recursos Não Incluídos
+            </label>
+            <div className="flex gap-2">
+              <Input 
+                placeholder="Ex: Trilha Sonora Paga"
+                className="flex-1"
+                value={notIncludedInput}
+                onChange={(e) => setNotIncludedInput(e.target.value)}
+                onKeyDown={(e) => e.key === 'Enter' && (e.preventDefault(), addNotIncluded())}
+              />
+              <Button type="button" variant="secondary" onClick={addNotIncluded}>Add</Button>
+            </div>
+            <div className="flex flex-wrap gap-2">
+              {Array.isArray(formData.notIncluded) && formData.notIncluded.map((n, i) => (
+                <Badge key={i} variant="secondary" className="bg-red-500/10 text-red-400 border-red-500/20 pr-1 py-1">
+                  {n}
+                  <button type="button" onClick={() => removeNotIncluded(i)} className="ml-2 hover:text-red-400 p-0.5">
+                    <Trash2 className="w-3 h-3" />
+                  </button>
+                </Badge>
+              ))}
+            </div>
+          </div>
+
+          {/* Tags */}
+          <Input 
+            label="Tags (Separadas por vírgula)"
+            placeholder="Ex: premium, reels, tiktok"
+            value={Array.isArray(formData.tags) ? formData.tags.join(', ') : ''}
+            onChange={(e) => setFormData({ ...formData, tags: e.target.value.split(',').map(t => t.trim()).filter(Boolean) })}
+          />
+
+          {/* Destaque e Ativo */}
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+            <div className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/5">
+              <input 
+                id="isFeatured"
+                type="checkbox"
+                className="w-4 h-4 rounded border-white/10 bg-white/5 text-violet-500 focus:ring-violet-500"
+                checked={formData.isFeatured}
+                onChange={(e) => setFormData({ ...formData, isFeatured: e.target.checked })}
+              />
+              <label htmlFor="isFeatured" className="text-sm text-zinc-300 cursor-pointer">
+                Destacar este serviço na vitrine
+              </label>
+            </div>
+
+            <div className="flex items-center gap-3 p-4 bg-white/5 rounded-xl border border-white/5">
+              <input 
+                id="isActive"
+                type="checkbox"
+                className="w-4 h-4 rounded border-white/10 bg-white/5 text-violet-500 focus:ring-violet-500"
+                checked={formData.isActive}
+                onChange={(e) => setFormData({ ...formData, isActive: e.target.checked })}
+              />
+              <label htmlFor="isActive" className="text-sm text-zinc-300 cursor-pointer">
+                Serviço Ativo (Visível no site)
+              </label>
             </div>
           </div>
 
