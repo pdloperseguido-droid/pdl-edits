@@ -16,7 +16,7 @@ import { relations } from 'drizzle-orm';
 // Armazena usuários (clientes e admins)
 // ============================================
 export const users = mysqlTable('users', {
-  id: varchar('id', { length: 36 }).primaryKey().notNull(),
+  id: varchar('id', { length: 36 }).primaryKey().$defaultFn(() => crypto.randomUUID()),
   name: varchar('name', { length: 255 }).notNull(),
   email: varchar('email', { length: 255 }).notNull().unique(),
   password: varchar('password', { length: 255 }),
@@ -34,7 +34,7 @@ export const users = mysqlTable('users', {
 // Para NextAuth OAuth providers
 // ============================================
 export const accounts = mysqlTable('accounts', {
-  id: varchar('id', { length: 36 }).primaryKey().notNull(),
+  id: varchar('id', { length: 36 }).primaryKey().$defaultFn(() => crypto.randomUUID()),
   userId: varchar('user_id', { length: 36 }).notNull(),
   type: varchar('type', { length: 255 }).notNull(),
   provider: varchar('provider', { length: 255 }).notNull(),
@@ -65,7 +65,7 @@ export const sessions = mysqlTable('sessions', {
 // Catálogo de serviços disponíveis
 // ============================================
 export const services = mysqlTable('services', {
-  id: varchar('id', { length: 36 }).primaryKey().notNull(),
+  id: varchar('id', { length: 36 }).primaryKey().$defaultFn(() => crypto.randomUUID()),
   slug: varchar('slug', { length: 255 }).notNull().unique(),
   title: varchar('title', { length: 255 }).notNull(),
   description: text('description').notNull(),
@@ -92,7 +92,7 @@ export const services = mysqlTable('services', {
 // Itens do portfólio (before/after)
 // ============================================
 export const portfolio = mysqlTable('portfolio', {
-  id: varchar('id', { length: 36 }).primaryKey().notNull(),
+  id: varchar('id', { length: 36 }).primaryKey().$defaultFn(() => crypto.randomUUID()),
   title: varchar('title', { length: 255 }).notNull(),
   description: text('description'),
   category: varchar('category', { length: 100 }).notNull(),
@@ -112,7 +112,7 @@ export const portfolio = mysqlTable('portfolio', {
 // Pedidos dos clientes
 // ============================================
 export const orders = mysqlTable('orders', {
-  id: varchar('id', { length: 36 }).primaryKey().notNull(),
+  id: varchar('id', { length: 36 }).primaryKey().$defaultFn(() => crypto.randomUUID()),
   userId: varchar('user_id', { length: 36 }).notNull(),
   serviceId: varchar('service_id', { length: 36 }).notNull(),
   status: mysqlEnum('status', [
@@ -142,7 +142,7 @@ export const orders = mysqlTable('orders', {
 // Sistema de chat pós-venda por pedido
 // ============================================
 export const messages = mysqlTable('messages', {
-  id: varchar('id', { length: 36 }).primaryKey().notNull(),
+  id: varchar('id', { length: 36 }).primaryKey().$defaultFn(() => crypto.randomUUID()),
   orderId: varchar('order_id', { length: 36 }).notNull(),
   senderId: varchar('sender_id', { length: 36 }).notNull(),
   content: text('content').notNull(),
