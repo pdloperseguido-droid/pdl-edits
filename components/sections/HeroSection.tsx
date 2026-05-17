@@ -33,7 +33,7 @@ export function HeroSection() {
             mounted ? 'animate-fade-in-up animation-delay-100' : 'opacity-0'
           )}
         >
-          Seu vídeo bruto.
+          Seu material original.
           <br />
           <span className="text-[#A855F7] tracking-[-0.06em]">Pronto para vender.</span>
         </h1>
