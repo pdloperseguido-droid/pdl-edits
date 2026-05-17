@@ -33,9 +33,15 @@ export function HeroSection() {
             mounted ? 'animate-fade-in-up animation-delay-100' : 'opacity-0'
           )}
         >
-          SEU MATERIAL ORIGINAL.
+          VOCÊ CRIA.
           <br />
-          <span className="text-[#A855F7]">PRONTO PARA VENDER.</span>
+          NÓS ELEVAMOS.
+          <br />
+          <span className="text-[#A855F7]">
+            EDIÇÕES FEITAS
+            <br />
+            PARA IMPACTAR.
+          </span>
         </h1>
 
         {/* Subtítulo com copy direta */}
