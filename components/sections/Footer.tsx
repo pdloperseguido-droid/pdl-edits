@@ -53,8 +53,15 @@ export function Footer() {
         <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-8">
           <div className="max-w-lg">
             <h2 className="font-heading uppercase text-2xl md:text-3xl font-bold tracking-[-0.035em] text-white mb-3">
-              Pronto para ter vídeos que{' '}
-              <span className="text-gradient">realmente vendem?</span>
+              PRONTO PARA
+              <br />
+              ELEVAR SEU CONTEÚDO
+              <br />
+              <span className="text-gradient">
+                COM EDIÇÕES
+                <br />
+                DE OUTRO NÍVEL?
+              </span>
             </h2>
             <p className="font-sans text-[13px] font-normal leading-relaxed text-zinc-400">
               Junte-se a centenas de criadores que já transformaram seu conteúdo com edição profissional.
