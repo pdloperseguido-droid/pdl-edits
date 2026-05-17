@@ -259,21 +259,22 @@
 }
 
 /* ================================================
-   Badge accent
+   Badge accent (Subtítulos de seção)
    ================================================ */
 .badge-accent {
   display: inline-flex;
   align-items: center;
   gap: 6px;
-  padding: 4px 12px;
+  padding: 5px 14px;
   border-radius: 999px;
-  background: var(--accent-muted);
-  border: 1px solid rgba(124, 58, 237, 0.25);
-  color: #A78BFA;
-  font-size: 12px;
-  font-weight: 600;
-  letter-spacing: 0.04em;
+  background: rgba(124, 58, 237, 0.18);
+  border: 1px solid rgba(124, 58, 237, 0.45);
+  color: #C084FC;
+  font-size: 13px;
+  font-weight: 700;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
+  box-shadow: 0 0 16px rgba(124, 58, 237, 0.2);
 }
 
 /* ================================================

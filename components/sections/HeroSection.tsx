@@ -41,7 +41,7 @@ export function HeroSection() {
         {/* Subtítulo com copy direta */}
         <p
           className={cn(
-            'text-[clamp(1rem,2vw,1.1rem)] text-zinc-500 font-light max-w-2xl mx-auto leading-relaxed mb-8',
+            'text-[clamp(1rem,2vw,1.1rem)] text-zinc-400 font-normal max-w-2xl mx-auto leading-relaxed mb-8',
             mounted ? 'animate-fade-in-up animation-delay-200' : 'opacity-0'
           )}
         >
