@@ -61,7 +61,7 @@ export function Modal({ isOpen, onClose, title, description, size = 'md', childr
       <div
         className={cn(
           'relative w-full rounded-2xl glass-strong border border-white/10 shadow-2xl',
-          'animate-fade-in-up overflow-y-auto',
+          'animate-fade-in-up overflow-y-auto max-h-[85vh]',
           sizes[size],
           className
         )}
