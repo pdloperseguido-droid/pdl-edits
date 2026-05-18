@@ -46,11 +46,20 @@ export async function createService(data: ServiceInput) {
 
     await db.insert(services).values({
       id,
-      ...validated,
+      slug: validated.slug,
+      title: validated.title,
+      description: validated.description,
+      shortDescription: validated.shortDescription || null,
       price: validated.price.toString(),
+      category: validated.category,
+      deliveryDays: validated.deliveryDays,
+      thumbnailUrl: validated.thumbnailUrl || null,
       features: JSON.stringify(validated.features || []),
       notIncluded: JSON.stringify(validated.notIncluded || []),
       tags: (validated.tags || []).join(','),
+      isActive: validated.isActive ?? true,
+      isFeatured: validated.isFeatured ?? false,
+      sortOrder: 0,
     });
 
     revalidatePath('/catalogo');
@@ -74,11 +83,19 @@ export async function updateService(id: string, data: ServiceInput) {
 
     await db.update(services)
       .set({
-        ...validated,
+        slug: validated.slug,
+        title: validated.title,
+        description: validated.description,
+        shortDescription: validated.shortDescription || null,
         price: validated.price.toString(),
+        category: validated.category,
+        deliveryDays: validated.deliveryDays,
+        thumbnailUrl: validated.thumbnailUrl || null,
         features: JSON.stringify(validated.features || []),
         notIncluded: JSON.stringify(validated.notIncluded || []),
         tags: (validated.tags || []).join(','),
+        isActive: validated.isActive ?? true,
+        isFeatured: validated.isFeatured ?? false,
       })
       .where(eq(services.id, id));
 
