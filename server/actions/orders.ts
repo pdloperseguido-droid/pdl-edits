@@ -42,7 +42,7 @@ export async function createOrder(formData: FormData) {
     where: eq(services.id, parsed.data.serviceId),
   });
 
-  if (!service || !service.isActive) {
+  if (!service) {
     return { error: 'Serviço não encontrado ou indisponível' };
   }
 
