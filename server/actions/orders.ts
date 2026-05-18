@@ -162,8 +162,8 @@ export async function getOrders(status?: OrderStatus) {
       },
     })
     .from(orders)
-    .leftJoin(users, sql`${orders.userId} = ${users.id} COLLATE utf8mb4_0900_ai_ci`)
-    .leftJoin(services, sql`${orders.serviceId} = ${services.id} COLLATE utf8mb4_0900_ai_ci`)
+    .leftJoin(users, sql`${orders.userId} = ${users.id} COLLATE utf8mb4_unicode_ci`)
+    .leftJoin(services, sql`${orders.serviceId} = ${services.id} COLLATE utf8mb4_unicode_ci`)
     .where(whereClause)
     .orderBy(desc(orders.createdAt));
 
@@ -218,8 +218,8 @@ export async function getOrderById(orderId: string) {
       },
     })
     .from(orders)
-    .leftJoin(users, sql`${orders.userId} = ${users.id} COLLATE utf8mb4_0900_ai_ci`)
-    .leftJoin(services, sql`${orders.serviceId} = ${services.id} COLLATE utf8mb4_0900_ai_ci`)
+    .leftJoin(users, sql`${orders.userId} = ${users.id} COLLATE utf8mb4_unicode_ci`)
+    .leftJoin(services, sql`${orders.serviceId} = ${services.id} COLLATE utf8mb4_unicode_ci`)
     .where(eq(orders.id, orderId))
     .limit(1);
 
