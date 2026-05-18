@@ -16,6 +16,13 @@ export async function getActiveServices() {
 }
 
 /**
+ * Busca todos os serviços cadastrados para o catálogo público (ativos e inativos)
+ */
+export async function getAllServicesPublic() {
+  return await db.select().from(services).orderBy(asc(services.sortOrder));
+}
+
+/**
  * Busca todos os serviços (Admin)
  */
 export async function getAllServices() {

@@ -5,7 +5,7 @@ import {
   Clock, Shield, Headphones, Film
 } from 'lucide-react';
 import { ServiceCard } from '@/components/sections/ServiceCard';
-import { getActiveServices } from '@/server/actions/services';
+import { getAllServicesPublic } from '@/server/actions/services';
 
 export const metadata: Metadata = {
   title: 'Serviços de Edição de Vídeo',
@@ -61,7 +61,7 @@ const QUALITY_STANDARDS = [
 ];
 
 export default async function CatalogoPage() {
-  const dbServices = await getActiveServices();
+  const dbServices = await getAllServicesPublic();
 
   return (
     <div className="min-h-screen pt-20 pb-16 px-5 sm:px-8">
