@@ -138,24 +138,6 @@ export function AccountDashboardClient({ initialOrders, user }: AccountDashboard
                 {filteredOrders.length}
               </span>
             </h2>
-
-            {/* Filters */}
-            <div className="flex items-center gap-1 p-1 bg-white/5 border border-white/5 rounded-xl overflow-x-auto no-scrollbar">
-              {filterTabs.map(tab => (
-                <button
-                  key={tab.id}
-                  onClick={() => setFilter(tab.id as any)}
-                  className={cn(
-                    "px-4 py-2 rounded-lg text-[10px] font-black uppercase tracking-wider transition-all whitespace-nowrap",
-                    filter === tab.id 
-                      ? "bg-violet-500 text-white shadow-lg shadow-violet-500/20" 
-                      : "text-zinc-500 hover:text-zinc-300"
-                  )}
-                >
-                  {tab.label}
-                </button>
-              ))}
-            </div>
           </div>
 
           {/* Orders List */}
