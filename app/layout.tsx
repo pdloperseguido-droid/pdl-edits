@@ -4,6 +4,7 @@ import './globals.css';
 
 import { CustomCursor } from '@/components/ui/CustomCursor';
 import { AnimatedBackground } from '@/components/ui/AnimatedBackground';
+import { PageTransition } from '@/components/ui/PageTransition';
 
 const inter = Inter({ 
   subsets: ['latin'], 
@@ -45,7 +46,9 @@ export default function RootLayout({
       <body className={`${inter.variable} ${spaceGrotesk.variable} font-sans text-white antialiased`}>
         <CustomCursor />
         <AnimatedBackground />
-        {children}
+        <PageTransition>
+          {children}
+        </PageTransition>
         <Toaster position="top-right" richColors theme="dark" />
       </body>
     </html>
