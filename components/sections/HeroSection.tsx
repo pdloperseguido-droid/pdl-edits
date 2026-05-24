@@ -82,13 +82,14 @@ export function HeroSection() {
           )}
         >
           {[
-            { value: '200+' },
-            { value: '4.9★' },
-            { value: '72h' },
-            { value: '100%' },
+            { value: '200+', label: 'Vídeos entregues' },
+            { value: '4.9★', label: 'Avaliação média' },
+            { value: '72h', label: 'Prazo máximo' },
+            { value: '100%', label: 'Satisfação' },
           ].map((s, i) => (
             <div key={i} className="text-center px-4">
               <p className="text-[1.8rem] font-black font-display text-white tracking-tight">{s.value}</p>
+              <p className="text-xs text-zinc-500 uppercase tracking-wider mt-1">{s.label}</p>
             </div>
           ))}
         </div>
