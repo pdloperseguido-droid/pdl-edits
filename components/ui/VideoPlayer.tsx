@@ -12,25 +12,33 @@ export function VideoPlayer({ url, title }: VideoPlayerProps) {
   const [isDirectVideo, setIsDirectVideo] = useState(false);
 
   useEffect(() => {
-    // Detect YouTube
-    const ytMatch = url.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/);
-    if (ytMatch) {
-      setEmbedUrl(`https://www.youtube.com/embed/${ytMatch[1]}?autoplay=1`);
+    // Detect YouTube (suporta Shorts, watch?v=, youtu.be e parâmetros adicionais)
+    const extractYTId = (videoUrl: string) => {
+      const regex = /(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([^"&?\/\s]{11})/i;
+      const match = videoUrl.match(regex);
+      return match ? match[1] : null;
+    };
+
+    const ytId = extractYTId(url);
+    if (ytId) {
+      setEmbedUrl(`https://www.youtube.com/embed/${ytId}?autoplay=1`);
       return;
     }
 
     // Detect Vimeo
     const vimeoMatch = url.match(/(?:https?:\/\/)?(?:www\.)?vimeo\.com\/(.+)/);
     if (vimeoMatch) {
-      setEmbedUrl(`https://player.vimeo.com/video/${vimeoMatch[1]}?autoplay=1`);
+      // Pega apenas o ID (números) caso haja query params na URL do Vimeo
+      const vimeoId = vimeoMatch[1].split(/[?#]/)[0];
+      setEmbedUrl(`https://player.vimeo.com/video/${vimeoId}?autoplay=1`);
       return;
     }
 
-    // Default to direct video if it looks like one
+    // Default to direct video se parecer com um
     if (url.match(/\.(mp4|webm|ogg)$/i)) {
       setIsDirectVideo(true);
     } else {
-      // If we don't know what it is, try to use it as a direct source anyway
+      // Tenta usar como direct source para outros links
       setIsDirectVideo(true);
     }
   }, [url]);

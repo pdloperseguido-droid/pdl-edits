@@ -39,7 +39,7 @@ export default function SobrePage() {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="glass border border-white/5 rounded-3xl p-8 text-center space-y-5 hover:border-violet-500/20 transition-all group">
+          <div className="glass border border-white/5 rounded-3xl p-6 sm:p-8 text-center space-y-5 hover:border-violet-500/20 transition-all group">
             <div className="w-14 h-14 rounded-2xl bg-violet-500/10 flex items-center justify-center mx-auto ring-1 ring-white/5 group-hover:ring-violet-500/30 transition-all">
               <Shield className="w-7 h-7 text-violet-400" />
             </div>
@@ -51,7 +51,7 @@ export default function SobrePage() {
             </div>
           </div>
 
-          <div className="glass border border-white/5 rounded-3xl p-8 text-center space-y-5 hover:border-violet-500/20 transition-all group">
+          <div className="glass border border-white/5 rounded-3xl p-6 sm:p-8 text-center space-y-5 hover:border-violet-500/20 transition-all group">
             <div className="w-14 h-14 rounded-2xl bg-violet-500/10 flex items-center justify-center mx-auto ring-1 ring-white/5 group-hover:ring-violet-500/30 transition-all">
               <Clock className="w-7 h-7 text-violet-400" />
             </div>
@@ -63,7 +63,7 @@ export default function SobrePage() {
             </div>
           </div>
 
-          <div className="glass border border-white/5 rounded-3xl p-8 text-center space-y-5 hover:border-violet-500/20 transition-all group">
+          <div className="glass border border-white/5 rounded-3xl p-6 sm:p-8 text-center space-y-5 hover:border-violet-500/20 transition-all group">
             <div className="w-14 h-14 rounded-2xl bg-violet-500/10 flex items-center justify-center mx-auto ring-1 ring-white/5 group-hover:ring-violet-500/30 transition-all">
               <Star className="w-7 h-7 text-violet-400" />
             </div>
@@ -75,7 +75,7 @@ export default function SobrePage() {
             </div>
           </div>
 
-          <div className="glass border border-white/5 rounded-3xl p-8 text-center space-y-5 hover:border-violet-500/20 transition-all group">
+          <div className="glass border border-white/5 rounded-3xl p-6 sm:p-8 text-center space-y-5 hover:border-violet-500/20 transition-all group">
             <div className="w-14 h-14 rounded-2xl bg-violet-500/10 flex items-center justify-center mx-auto ring-1 ring-white/5 group-hover:ring-violet-500/30 transition-all">
               <MessageCircle className="w-7 h-7 text-violet-400" />
             </div>

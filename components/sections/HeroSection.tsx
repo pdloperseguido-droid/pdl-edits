@@ -29,7 +29,7 @@ export function HeroSection() {
         {/* Título principal — tipografia forte */}
         <h1
           className={cn(
-            'font-heading text-4xl md:text-6xl lg:text-[6.5rem] font-extrabold tracking-[-0.045em] leading-[0.95] mb-6',
+            'font-heading text-[2.5rem] leading-[1.05] sm:leading-[0.95] sm:text-5xl md:text-6xl lg:text-[6.5rem] font-extrabold tracking-[-0.045em] mb-6',
             mounted ? 'animate-fade-in-up animation-delay-100' : 'opacity-0'
           )}
         >

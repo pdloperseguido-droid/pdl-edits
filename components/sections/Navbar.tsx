@@ -150,7 +150,7 @@ export function Navbar() {
 
         {/* Menu mobile */}
         {mobileOpen && (
-          <div className="md:hidden bg-[#080808]/97 backdrop-blur-2xl px-5 py-4 space-y-0.5 animate-fade-in">
+          <div className="md:hidden bg-[#080808]/95 backdrop-blur-2xl px-5 py-6 space-y-1 animate-fade-in">
             {NAV_LINKS.map(({ href, label }) => (
               <Link
                 key={href}
