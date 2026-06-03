@@ -30,14 +30,15 @@ const FORMAT_TAGS: Record<string, string[]> = {
 export function PortfolioCard({ item }: PortfolioCardProps) {
   const [sliderValue, setSliderValue] = useState(50);
   const [isHovering, setIsHovering] = useState(false);
+  const [isPlaying, setIsPlaying] = useState(false);
   const isVideo = item.type?.toUpperCase() === 'VIDEO';
 
   const getThumbnail = () => {
     if (!isVideo) return item.afterUrl;
     if (item.beforeUrl?.startsWith('http')) return item.beforeUrl;
-    const ytMatch = item.afterUrl.match(/(?:https?:\/\/)?(?:www\.)?(?:youtube\.com|youtu\.be)\/(?:watch\?v=)?(.+)/);
-    if (ytMatch) return `https://img.youtube.com/vi/${ytMatch[1]}/maxresdefault.jpg`;
-    return item.beforeUrl;
+    const ytMatch = item.afterUrl.match(/(?:youtube\.com\/(?:[^\/]+\/.+\/|(?:v|e(?:mbed)?)\/|.*[?&]v=)|youtu\.be\/|youtube\.com\/shorts\/)([^"&?\/\s]{11})/i);
+    if (ytMatch) return `https://img.youtube.com/vi/${ytMatch[1]}/hqdefault.jpg`;
+    return item.beforeUrl || 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=900';
   };
 
   const thumbnailUrl = getThumbnail();
@@ -52,7 +53,29 @@ export function PortfolioCard({ item }: PortfolioCardProps) {
       {/* Mídia */}
       <div className="relative aspect-video overflow-hidden bg-zinc-950">
         {isVideo ? (
-          <VideoPlayer url={item.afterUrl} title={item.title} />
+          isPlaying ? (
+            <VideoPlayer url={item.afterUrl} title={item.title} />
+          ) : (
+            <div 
+              className="relative w-full h-full cursor-pointer group/play"
+              onClick={() => setIsPlaying(true)}
+            >
+              <img
+                src={thumbnailUrl}
+                alt={`${item.title} — thumbnail`}
+                className="w-full h-full object-cover opacity-80 group-hover/play:opacity-100 transition-opacity"
+                loading="lazy"
+                onError={(e) => {
+                  (e.target as HTMLImageElement).src = 'https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&w=900';
+                }}
+              />
+              <div className="absolute inset-0 flex items-center justify-center">
+                <div className="w-12 h-12 bg-violet-600/90 rounded-full flex items-center justify-center text-white shadow-lg shadow-violet-600/30 transform group-hover/play:scale-110 transition-transform">
+                  <Play className="w-5 h-5 ml-1" fill="currentColor" />
+                </div>
+              </div>
+            </div>
+          )
         ) : (
           <div className="relative w-full h-full">
             {/* Imagem "depois" */}
