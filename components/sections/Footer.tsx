@@ -39,7 +39,7 @@ const DiscordIcon = ({ className }: { className?: string }) => (
 
 const SOCIALS = [
   { icon: TiktokIcon, href: 'https://tiktok.com/@pdledits', label: 'TikTok' },
-  { icon: InstagramIcon, href: 'https://instagram.com/pdledits', label: 'Instagram' },
+  { icon: InstagramIcon, href: 'https://www.instagram.com/pdl.edits/', label: 'Instagram' },
   { icon: DiscordIcon, href: 'https://discord.gg/Wg8f3e28yv', label: 'Discord' },
 ];
 
